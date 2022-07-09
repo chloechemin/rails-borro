@@ -1,0 +1,9 @@
+<h1>POSTS INDEX</h1>
+
+<% @posts.each do |post| %>
+<%= post.category %>
+<%= post.title %>
+<%= post.description %>
+<%= post.location %>
+<%= post.duration %>
+<% end %>
