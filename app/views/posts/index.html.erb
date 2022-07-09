@@ -2,7 +2,7 @@
 
 <% @posts.each do |post| %>
 <%= post.category %>
-<%= post.title %>
+<%= link_to post.title, post_path(post) %>
 <%= post.description %>
 <%= post.location %>
 <%= post.duration %>
