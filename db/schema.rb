@@ -16,15 +16,15 @@ ActiveRecord::Schema.define(version: 2022_07_09_014112) do
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.bigint "booker_id", null: false
+    t.bigint "user_id", null: false
     t.bigint "post_id", null: false
     t.datetime "start_time"
     t.datetime "end_time"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["booker_id"], name: "index_bookings_on_booker_id"
     t.index ["post_id"], name: "index_bookings_on_post_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "chatrooms", force: :cascade do |t|
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 2022_07_09_014112) do
     t.text "description"
     t.string "location"
     t.integer "duration"
-    t.bigint "owner_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["owner_id"], name: "index_posts_on_owner_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -91,11 +91,11 @@ ActiveRecord::Schema.define(version: 2022_07_09_014112) do
   end
 
   add_foreign_key "bookings", "posts"
-  add_foreign_key "bookings", "users", column: "booker_id"
+  add_foreign_key "bookings", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "chatrooms"
   add_foreign_key "participants", "users"
-  add_foreign_key "posts", "users", column: "owner_id"
+  add_foreign_key "posts", "users"
   add_foreign_key "reviews", "bookings"
 end
