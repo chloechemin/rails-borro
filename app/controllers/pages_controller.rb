@@ -3,4 +3,9 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def my_bookings
+    @user = current_user
+    @bookings = Booking.where(user_id: current_user.id)
+  end
 end
