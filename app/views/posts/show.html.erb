@@ -5,3 +5,9 @@
   <p><%= @post.duration %></p>
 
 <p><%= link_to "Back to list", posts_path %></p>
+<button type="button" class="btn btn-success"><%= link_to "Book", new_post_booking_path(@post) %></button>
+<button type="button" class="btn btn-success"><%= link_to "Edit", edit_post_path(@post) %></button>
+<button type="button" class="btn btn-danger"><%=link_to "Delete",
+                    post_path(@post),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %></button>

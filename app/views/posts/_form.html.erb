@@ -1,10 +1,11 @@
-<%= simple_form_for (@post) do |f| %>
-  <%= f.input :title %>
-    <%= f.input :category %>
+<%= simple_form_for(@post) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :category, :collection => %w[product service]%>
     <%= f.input :description %>
     <%= f.input :location %>
     <%= f.input :duration %>
-    <%= f.submit "Create post", class: "btn btn-primary" %>
+    <%= f.submit name: button_name, class: "btn btn-primary" %>
     <%= f.button :button do %>
-  <% end %>
+      <button type="button" class="btn btn-danger"><%= link_to "Back to Posts", posts_path %></button>
+    <% end %>
 <% end %>
