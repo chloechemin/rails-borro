@@ -3,6 +3,7 @@
 <p><%= @booking.status %> BY <%=@booking.post.user.username %></p>
 <strong><%=@booking.post.title.upcase %></strong>
 <p><%= @booking.post.location %></p>
+<p><%= @booking.message %></p>
 <p><%= @booking.start_time.to_time.strftime('%B %e at %l:%M %p')%></p>
 
 <p><%= link_to "Back to posts", posts_path %></p>
