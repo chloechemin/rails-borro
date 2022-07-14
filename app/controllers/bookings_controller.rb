@@ -33,9 +33,8 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-<<<<<<< HEAD
-    @booking.update(params[booking_params])
-    redirect_to booking_path(@booking)
+    @booking.update(booking_params)
+    redirect_to post_booking_path(@booking)
   end
 
   def accept
@@ -50,10 +49,8 @@ class BookingsController < ApplicationController
     @booking.status = "Not confirmed"
     @booking.save
     redirect_to post_booking_path([@booking.post, @booking])
-=======
-    @booking.update(booking_params)
-    redirect_to post_booking_path
->>>>>>> master
+    # @booking.update(booking_params)
+    # redirect_to post_booking_path
   end
 
   def destroy
