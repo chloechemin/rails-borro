@@ -2,6 +2,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @markers = @posts.geocoded.map do |post|
+      {
+        lat: post.latitude,
+        lng: post.longitude
+      }
+    end
   end
 
   def show
