@@ -1,6 +1,6 @@
 <h1>BOOKINGS SHOW </h1>
 <p> Thanks for you booking </p>
-<p><%= @booking.status.upcase %> BY <%=@booking.post.user.username.upcase %></p>
+<p><%= @booking.status %> BY <%=@booking.post.user.username %></p>
 <strong><%=@booking.post.title.upcase %></strong>
 <p><%= @booking.post.location %></p>
 <p><%= @booking.start_time.to_time.strftime('%B %e at %l:%M %p')%></p>
