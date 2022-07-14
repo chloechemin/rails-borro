@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
     @post = Post.find(params[:post_id])
     @booking = Booking.new
   end
-  
+
   def show
     @booking = Booking.find(params[:id])
   end
@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @post = Post.find(params[:post_id])
     @booking.post = @post
+    @booking.user = current_user
     @booking.status = "Not confirmed"
     if @booking.save
       redirect_to post_booking_path(@post, @booking)
@@ -23,12 +24,14 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    @post = @booking.post
   end
 
   def update
     @booking = Booking.find(params[:id])
-    @booking.update(params[:booking])
-    redirect_to booking_path(@booking)
+    @booking.update(booking_params)
+    redirect_to post_booking_path
+  end
 
   def destroy
     @booking = Booking.find(params[:id])
@@ -39,6 +42,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_time, :end_time, :status, :user_id, :post_id, :booking_id)
+    params.require(:booking).permit(:start_time, :end_time, :status, :message, :user_id, :post_id, :booking_id)
   end
 end
