@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   resources :posts do
     resources :bookings
   end
+  resources :bookings, only: [:index] do
+    member do
+      patch :accept
+      patch :decline
+    end
+  end
 end
