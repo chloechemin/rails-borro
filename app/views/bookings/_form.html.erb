@@ -1,9 +1,7 @@
-<div class="main-container">
   <%= simple_form_for [ @post, @booking ] do |f| %>
       <%= f.input :start_time %>
       <%= f.input :end_time %>
-      <%= f.input :message %>
+      <%= f.input :message %> <p>Introduce yourself, explain the purpose of your booking and share your catch-up preferences.</p>
       <%= f.submit name: button_name, class: "btn btn-primary" %>
       <button type="button" class="btn btn-danger"><%= link_to "Back to activity", post_path(@post) %></button>
   <% end %>
-</div>

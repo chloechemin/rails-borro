@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="main-container borro">
   <% @bookings.each do |booking| %>
 
   <%= link_to "Accept", accept_booking_path(booking), class: "btn btn-primary", method: "patch" %>

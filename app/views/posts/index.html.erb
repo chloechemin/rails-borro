@@ -1,10 +1,12 @@
 <div class="main-container borro">
 <h2><strong>SEARCH PAGE THEN RESULTS PAGE </strong></h2>
 <h2>MAP + CARDS</h2>
+<br>
 
+<h3><strong><%=@posts.length%> results </strong>near you</h3>
   <% @posts.each do |post| %>
   <div class="white-card">
-  <%= link_to post.title, post_path(post) %>
+  <%= link_to post.title.capitalize, post_path(post) %>
   <p>Location: <%= post.location %></p>
   <p>For up to <%= post.duration %> days</p>
   </div>
