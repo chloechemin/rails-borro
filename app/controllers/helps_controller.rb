@@ -10,7 +10,7 @@ class HelpsController < ApplicationController
     @help.help_request = @help_request
     @help.user = current_user
     if @help.save
-      redirect_to help_request_help_path(@help_request, @help)
+      redirect_to root_path
     else
       render :new
     end

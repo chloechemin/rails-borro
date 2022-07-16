@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :bookings
   end
   resources :help_requests do
-    resources :help, only: [:new, :create]
+    resources :helps, only: [:new, :create]
   end
   resources :bookings, only: [:index] do
     member do
