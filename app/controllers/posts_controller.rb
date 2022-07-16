@@ -7,18 +7,19 @@ class PostsController < ApplicationController
         lat: post.latitude,
         lng: post.longitude,
         info_window: render_to_string(partial: "info_window", locals: { post: post }),
-        image_url: helpers.asset_url("Pin-thingstoborrow.png")
+        image_url: post.category == 'product' ? helpers.asset_url("Pin-thingstoborrow.png") : helpers.asset_url("Pin-service.png")
       }
     end
-      # if post.category == 'product'
-      #   { image_url: helpers.asset_url("Pin-thingstoborrow.png") }
-      # else
-      #   { image_url: helpers.asset_url("Pin-service.png") }
-      # end
   end
 
   def show
     @post = Post.find(params[:id])
+    @markers = [{
+      lat: @post.user.latitude,
+      lng: @post.user.longitude,
+      info_window: @post.user.address,
+      image_url: helpers.asset_url("Pin-service.png")
+    }]
   end
 
   def new

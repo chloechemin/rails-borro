@@ -2,11 +2,6 @@
     <h2><strong><%=@post.title.capitalize %></strong></h2>
     <p><%= @post.description.capitalize %></p>
 
-  <div style="width: 2500px; height: 250px;"
-  data-controller="mapbox"
-  data-mapbox-markers-value="<%= @markers.to_json %>"
-  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -31,7 +26,10 @@
 
     <div class="white-card">
       <p><%= @post.user.username %></p>
-      <p>MAP SHOWING <%= @post.location %></p>
+        <div style="width: 100%; height: 250px;"
+              data-controller="mapbox"
+              data-mapbox-markers-value="<%= @markers.to_json %>"
+              data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
 
   <p><%= link_to "Back to list", posts_path %></p>
