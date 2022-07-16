@@ -1,15 +1,16 @@
 <div class="main-container borro">
-<h2><strong>SEARCH PAGE THEN RESULTS PAGE </strong></h2>
-<h2>MAP + CARDS</h2>
-<br>
-
-<h3><strong><%=@posts.length%> results </strong>near you</h3>
-  <% @posts.each do |post| %>
-  <div class="white-card">
-  <%= link_to post.title.capitalize, post_path(post) %>
-  <p>Location: <%= post.location %></p>
-  <p>For up to <%= post.duration %> days</p>
-  </div>
+  <h3><strong><%=@posts.length%> results </strong>near you</h3>
+    <div style="width: 100%; height: 500px;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+      <% @posts.each do |post| %>
+    <div class="white-card">
+      <%= link_to post.title.capitalize, post_path(post) %>
+      <p>Location: <%= post.location %></p>
+      <p>For up to <%= post.duration %> days</p>
+    </div>
   <% end %>
   <button type="button" class="btn btn-danger"><%= link_to "Back", posts_path %></button>
 </div>

@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 2022_07_16_051309) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -109,6 +111,8 @@ ActiveRecord::Schema.define(version: 2022_07_16_051309) do
     t.string "last_name"
     t.string "phone_number"
     t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
