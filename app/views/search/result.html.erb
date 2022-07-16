@@ -1,19 +1,12 @@
-<h1>Results</h1>
-<p>Find me in app/views/search/index.html.erb</p>
-
-
-<%= params[:category] %>
-<%= params[:description] %>
-<%= params[:duration] %>
-<%= params[:distance] %>
+<h1><%= @posts.count %> Results</h1>
 
 
 <% @posts.each do |post| %>
-<p>
-<%= post.category %>
-<%= link_to post.title, post_path(post) %>
-<%= post.description %>
-<%= post.location %>
-<%= post.duration %>
-</p>
+  <p>
+  <%= post.category %> |
+  <%= link_to post.title, post_path(post) %> |
+  <%= post.description %> |
+  <%= post.location %> |
+  <%= post.duration %>
+  </p>
 <% end %>
