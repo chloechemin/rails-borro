@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_12_093807) do
+ActiveRecord::Schema.define(version: 2022_07_16_051309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,27 @@ ActiveRecord::Schema.define(version: 2022_07_12_093807) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "help_requests", force: :cascade do |t|
+    t.string "category"
+    t.string "title"
+    t.text "description"
+    t.string "location"
+    t.integer "duration"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_help_requests_on_user_id"
+  end
+
+  create_table "helps", force: :cascade do |t|
+    t.text "message"
+    t.bigint "user_id", null: false
+    t.bigint "help_request_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["help_request_id"], name: "index_helps_on_help_request_id"
+    t.index ["user_id"], name: "index_helps_on_user_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.bigint "chatroom_id", null: false
@@ -63,6 +84,8 @@ ActiveRecord::Schema.define(version: 2022_07_12_093807) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -88,12 +111,17 @@ ActiveRecord::Schema.define(version: 2022_07_12_093807) do
     t.string "last_name"
     t.string "phone_number"
     t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "bookings", "posts"
   add_foreign_key "bookings", "users"
+  add_foreign_key "help_requests", "users"
+  add_foreign_key "helps", "help_requests"
+  add_foreign_key "helps", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "chatrooms"

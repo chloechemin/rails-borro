@@ -1,8 +1,11 @@
-<h1> MY BOOKINGS </h1>
-<% @bookings.each do |booking| %>
-  <strong><%= booking.post.title.capitalize() %></strong>
-  <p><%= booking.post.category %></p>
-  <p><%= booking.post.description %></p>
-  <p><%= booking.post.duration %></p>
-  <p><%= booking.post.location %></p>
-<% end %>
+<div class="main-container">
+  <h1> MY BOOKINGS </h1>
+  <% @bookings.each do |booking| %>
+    <strong><%= booking.post.title.capitalize() %></strong>
+    <p><%= booking.post.category %></p>
+    <p><%= booking.post.description %></p>
+    <p><%= booking.post.duration %></p>
+    <p><%= booking.post.location %></p>
+  <% end %>
+    <button type="button" class="btn btn-danger"><%= link_to "Back", post_path(@post) %></button>
+</div>
