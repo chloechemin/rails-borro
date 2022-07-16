@@ -1,12 +1,52 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+// .navbar-lewagon {
+//   justify-content: space-between;
+//   background: white;
+// }
+
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
+
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
+
+/* Place the navbar at the bottom of the page, and make it stick */
+.navbar-borro {
+  background: $white;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  // padding: 0px 20px 0px 20px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+/* Style the links inside the navigation bar */
+.navbar-item {
+  float: left;
+  display: block;
+  text-align: center;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-item {
+
+  p {
+    font-size: 13px;
+    color: $dark-purple;
+    padding: 0px 12px;
+    margin-bottom: 2px;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 14px;
+    color: $dark-purple;
+  }
+}
+
+/* Add a color to the active/current link */
+.navbar-borro a.active {
+  color: $purple;
+  font-weight: 700;
 }

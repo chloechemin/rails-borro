@@ -1,4 +1,8 @@
 class BookingsController < ApplicationController
+  def index
+    @user = current_user
+    @bookings = @user.bookings
+  end
 
   def new
     @post = Post.find(params[:post_id])
@@ -30,7 +34,23 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     @booking.update(booking_params)
-    redirect_to post_booking_path
+    redirect_to post_booking_path(@booking)
+  end
+
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.status = "Confirmed"
+    @booking.save
+    redirect_to post_booking_path([@booking.post, @booking])
+  end
+
+  def decline
+    @booking = Booking.find(params[:id])
+    @booking.status = "Not confirmed"
+    @booking.save
+    redirect_to post_booking_path([@booking.post, @booking])
+    # @booking.update(booking_params)
+    # redirect_to post_booking_path
   end
 
   def destroy

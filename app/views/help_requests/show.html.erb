@@ -1,0 +1,17 @@
+<div class="main-container borro">
+    <h2><strong><%=@help_request.title.capitalize %></strong></h2>
+    <p><%= @help_request.description.capitalize %></p>
+
+    <div class="white-card">
+      <p><%= @help_request.user.username %></p>
+      <p>MAP SHOWING <%= @help_request.location %></p>
+    </div>
+
+  <p><%= link_to "Back to list", help_requests_path %></p>
+  <button type="button" class="btn btn-success"><%= link_to "I WANT TO HELP", new_help_request_help_path(@help_request) %></button>
+  <button type="button" class="btn btn-success"><%= link_to "Edit", edit_help_request_path(@help_request) %></button>
+  <button type="button" class="btn btn-danger"><%=link_to "Delete",
+                      help_request_path(@help_request),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %></button>
+</div>
