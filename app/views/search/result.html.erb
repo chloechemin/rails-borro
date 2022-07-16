@@ -1,0 +1,12 @@
+<h1><%= @posts.count %> Results</h1>
+
+
+<% @posts.each do |post| %>
+  <p>
+  <%= post.category %> |
+  <%= link_to post.title, post_path(post) %> |
+  <%= post.description %> |
+  <%= post.location %> |
+  <%= post.duration %>
+  </p>
+<% end %>
