@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def result
-
     if params[:category].present? || params[:description].present? || params[:duration].present?
 
       sql_query = " \
@@ -13,6 +12,13 @@ class SearchController < ApplicationController
     else
       @posts = Post.all
     end
-
+    @markers = @posts.geocoded.map do |post|
+      {
+        lat: post.latitude,
+        lng: post.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { post: post }),
+        image_url: post.category == 'product' ? helpers.asset_url("Pin-thingstoborrow.png") : helpers.asset_url("Pin-service.png")
+      }
+    end
   end
 end

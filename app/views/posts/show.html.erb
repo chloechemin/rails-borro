@@ -32,7 +32,7 @@
               data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
 
-  <p><%= link_to "Back to list", posts_path %></p>
+  <button type="button" class="btn btn-primary"><%=link_to "Back", pages_search_path%>
   <button type="button" class="btn btn-success"><%= link_to "CHECK AVAILABILITIES", new_post_booking_path(@post) %></button>
   <button type="button" class="btn btn-success"><%= link_to "Edit", edit_post_path(@post) %></button>
   <button type="button" class="btn btn-danger"><%=link_to "Delete",
