@@ -1,0 +1,11 @@
+<div class="main-container borro">
+<h3><strong><%=@help_requests.length%> results </strong>near you</h3>
+  <% @help_requests.each do |help_request| %>
+  <div class="white-card">
+  <%= link_to help_request.title.capitalize, help_request_path(help_request) %>
+  <p>Location: <%= help_request.location %></p>
+  <p>For up to <%= help_request.duration %> days</p>
+  </div>
+  <% end %>
+  <button type="button" class="btn btn-danger"><%= link_to "Back", help_requests_path %></button>
+</div>

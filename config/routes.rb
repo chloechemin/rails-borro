@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :posts do
     resources :bookings
   end
+  resources :help_requests do
+    resources :help, only: [:new, :create]
+  end
   resources :bookings, only: [:index] do
     member do
       patch :accept
