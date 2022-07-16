@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'search/result'
   devise_for :users
   root to: 'pages#home'
+  resources :chatrooms, only: [:show] do
+    resources :messages, only: [:create]
+  end
 
   get '/pages/my_bookings', to: 'pages#my_bookings', as: :my_bookings
   get '/pages/search', to: 'pages#search'
