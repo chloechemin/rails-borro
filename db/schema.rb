@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_14_093137) do
+ActiveRecord::Schema.define(version: 2022_07_16_051309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,28 @@ ActiveRecord::Schema.define(version: 2022_07_14_093137) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "help_requests", force: :cascade do |t|
+    t.string "category"
+    t.string "title"
+    t.text "description"
+    t.string "location"
+    t.integer "duration"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_help_requests_on_user_id"
+  end
+
+  create_table "helps", force: :cascade do |t|
+    t.text "message"
+    t.bigint "user_id", null: false
+    t.bigint "help_request_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["help_request_id"], name: "index_helps_on_help_request_id"
+    t.index ["user_id"], name: "index_helps_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -97,6 +119,9 @@ ActiveRecord::Schema.define(version: 2022_07_14_093137) do
 
   add_foreign_key "bookings", "posts"
   add_foreign_key "bookings", "users"
+  add_foreign_key "help_requests", "users"
+  add_foreign_key "helps", "help_requests"
+  add_foreign_key "helps", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "participants", "chatrooms"
