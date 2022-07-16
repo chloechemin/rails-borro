@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2022_07_12_093807) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+
   create_table "messages", force: :cascade do |t|
     t.bigint "chatroom_id", null: false
     t.text "content"
