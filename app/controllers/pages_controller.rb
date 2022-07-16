@@ -9,4 +9,11 @@ class PagesController < ApplicationController
     @user = current_user
     @bookings = Booking.where(user_id: current_user.id)
   end
+
+  def search
+  end
+
+  def result
+  end
+
 end
