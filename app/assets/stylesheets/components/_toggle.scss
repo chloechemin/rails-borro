@@ -1,4 +1,3 @@
-
 .my-class{
   position:absolute;
   transform: scale(0);
@@ -7,17 +6,54 @@
 .my-class + label {
   cursor: pointer;
   display: inline-block;
-  font-size: 0.7rem;
-  border-radius: 50rem;
-  padding: 0.1rem 0.5rem;
-  background-color: #ECEAFF;
-  color: #7E73FF;
-  border: 1px solid #7E73FF;
-  margin-right: 0.6rem;
-  margin-bottom: 0.4rem;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  // background-color: $yellow;
+  color: $dark-purple;
+  // border: 1px solid $yellow;
+  // margin-right: 0.6rem;
+  margin: 10px;
+  margin-bottom: 50px;
+
 }
 
 .my-class:checked + label {
-  background-color: black;
-  color: white !important;
+  // .btn
+  background-color: $yellow;
+  color: $dark-purple;
+  border: 1px solid $yellow;
+  font-weight: bold;
+  // btn btn-primary
+
+}
+
+.search_btn {
+
+}
+
+.input_field {
+  background-color: rgb(227, 223, 223);
+  border: transparent;
+  border-radius: 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+}
+
+.yellow-word {
+  color: $yellow;
+}
+
+.btn-primary {
+  border-radius: 12px;
+  color: white;
+}
+
+.center-content {
+  margin: auto;
+  width: 100%;
+  padding: 10px;
 }
