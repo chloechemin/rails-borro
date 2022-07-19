@@ -1,6 +1,17 @@
 .white-card {
   background-color: white;
-  padding: 30px 40px;
+  padding: 30px 30px;
   border-radius: 40px;
   margin: 10px 0px;
+}
+
+.gray-card {
+  background-color: $light-gray;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin: 10px 0px;
+
+  p {
+    margin-bottom: 2px;
+  }
 }
