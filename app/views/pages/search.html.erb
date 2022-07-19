@@ -1,21 +1,28 @@
 <div class="main-container borro">
-  <div class="white-card">
-    <h1>Search page</h1>
-    <p>You need to borrow:</p>
-    <%= form_with url: "/search/result", method: :get do |form| %>
 
-      <p><%= form.label :query, "Search for:" %></p>
-        <%= form.radio_button :category, "service" %>
-          <%= form.label :category_time, "their time" %>
-        <%= form.radio_button :category, "product" %>
-          <%= form.label :category_things, "their things" %>
+<div class="center-content">
+<h3>You need to borrow:</h3>
 
-        <p><%= form.text_field :description, placeholder: "Camping gear" %></p>
+<form action="/search/result" accept-charset="UTF-8" method="get">
 
-        <p><%= form.number_field :duration, in: 1.0..20.0, step: 0.5 %> Days</p>
+  <%# <label for="query"></label> %>
+    <input class="my-class" type="radio" value="service" name="category" id="category_service" checked>
+    <label for="category_service">their time</label>
 
-        <p>Search radius <%= form.text_field :distance, placeholder: 0 %>km</p>
-      <%= form.submit "Search" %>
-    <% end %>
-  </div>
+    <input class="my-class" type="radio" value="product" name="category" id="category_product">
+    <label for="category_product">their things</label>
+
+    <p><input class="input_field" placeholder="Camping gear" type="text" name="description" id="description"></p>
+
+    <p><input class="input_field" step="0.5" min="1.0" max="20.0" placeholder="0" type="number" name="duration" id="duration"> Days</p>
+
+    <p><input class="input_field" placeholder="Distance" type="text" name="distance" id="distance"> km</p>
+
+  <input type="submit" name="commit" value="Search" data-disable-with="Search"  class="btn btn-primary" style="margin-left: 10px; border-radius: 10px; position: absolute;
+  margin-right: 160px;">
+
+</form>
+
+</div>
+
 </div>
