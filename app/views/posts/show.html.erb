@@ -23,19 +23,27 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
     <div class="white-card">
-      <p><%= @post.user.username %></p>
-        <div style="width: 100%; height: 250px;"
+        <div style="width: 100%; height: 150px;"
               data-controller="mapbox"
               data-mapbox-markers-value="<%= @markers.to_json %>"
               data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
 
-  <button type="button" class="btn btn-primary"><%=link_to "Back", pages_search_path%>
+  <div class="white-card">
+    <p><strong><%= @post.user.username %></strong></p>
+      <% @bookings.each do |booking| %>
+      <div class="gray-card">
+      <p><%= booking.user.username %></p>
+      <p><%= booking.review.comment %></p>
+       <% end %>
+      </div>
+  </div>
+
+  <button type="button" class="btn btn-primary"><%=link_to "BACK", pages_search_path%>
   <button type="button" class="btn btn-success"><%= link_to "CHECK AVAILABILITIES", new_post_booking_path(@post) %></button>
-  <button type="button" class="btn btn-success"><%= link_to "Edit", edit_post_path(@post) %></button>
-  <button type="button" class="btn btn-danger"><%=link_to "Delete",
+  <button type="button" class="btn btn-success"><%= link_to "EDIT", edit_post_path(@post) %></button>
+  <button type="button" class="btn btn-danger"><%=link_to "DELETE",
                       post_path(@post),
                       method: :delete,
                       data: { confirm: "Are you sure?" } %></button>
