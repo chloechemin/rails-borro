@@ -1,4 +1,5 @@
-<div class="main-container">
+<div class="main-container borro">
+<br>
   <%= simple_form_for(@post) do |f| %>
       <%= f.input :title %>
       <%= f.input :category, :collection => %w[product service]%>
@@ -9,7 +10,7 @@
       <%= f.input :duration %>
       <%= f.submit name: button_name, class: "btn btn-primary" %>
       <%= f.button :button do %>
-      <button type="button" class="btn btn-danger"><%= link_to "Back to Posts", posts_path %></button>
-      <% end %>
+         <a href="/"><i class="fas fa-angle-left back-btn"></i></a>
+     <%  end %>
   <% end %>
 </div>
