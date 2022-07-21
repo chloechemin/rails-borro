@@ -1,0 +1,12 @@
+<div class="main-container borro">
+  <h2> MY POSTS </h2>
+    <% @posts.each do |post| %>
+  <div class="white-card">
+      <strong><%= post.title.capitalize() %></strong><i> (<%= post.category %>)</i>
+      <p>Description: <i>"<%= post.description %>"</i></p>
+    <button type="button" class="btn btn-success mt-1"><%= link_to "VIEW POST", post_path(post) %></button>
+    <button type="button" class="btn btn-success mt-1"><%= link_to "MANAGE BOOKINGS", post_bookings_path(post) %></button>
+  </div>
+    <% end %>
+    <button type="button" class="btn btn-primary"><%= link_to "BACK", root_path %></button>
+</div>

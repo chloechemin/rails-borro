@@ -8,6 +8,18 @@ class PagesController < ApplicationController
   def my_bookings
     @user = current_user
     @bookings = Booking.where(user_id: current_user.id)
+    @bookings.each do |booking|
+      @post = Post.find(booking.post_id)
+    end
+  end
+
+  def my_posts
+    @user = current_user
+    @posts = Post.where(user_id: current_user.id)
+  end
+
+  def my_profile
+    @user = current_user
   end
 
   def search
