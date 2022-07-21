@@ -33,9 +33,9 @@
   <div class="white-card">
     <p><strong><%= @post.user.username %></strong></p>
       <% @bookings.each do |booking| %>
-      <div class="gray-card">
-      <p><%= booking.user.username %></p>
-      <p><%= booking.review.comment %></p>
+          <div class="gray-card">
+          <p><%= booking.user.username %></p>
+          <p><%= booking.review.comment unless booking.review == nil %></p>
        <% end %>
       </div>
   </div>
