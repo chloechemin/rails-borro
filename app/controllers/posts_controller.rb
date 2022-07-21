@@ -20,6 +20,7 @@ class PostsController < ApplicationController
       info_window: @post.user.address,
       image_url: helpers.asset_url("Pin-service.png")
     }]
+    @bookings = Booking.where(post_id: @post.id)
   end
 
   def new
@@ -55,6 +56,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:category, :title, :description, :location, :duration, :owner_id)
+    params.require(:post).permit(:category, :title, :description, :location, :duration, :owner_id, photos: [])
   end
 end

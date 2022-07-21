@@ -18,9 +18,9 @@ $danger:     $light-gray;
 // $warning:    $orange;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
-$border-radius-lg: 2px;
-$border-radius-sm: 2px;
+$border-radius:    20px;
+$border-radius-lg: 20px;
+$border-radius-sm: 20px;
 
 // Override other variables below!
 .borro h1 {
@@ -48,6 +48,7 @@ $border-radius-sm: 2px;
   color: white;
 }
 
+
 .back-btn {
   background-color: white;
   border-radius: 50%;
@@ -57,4 +58,6 @@ $border-radius-sm: 2px;
   position:absolute;
   top:20px;
   left:40px;
-}
+
+.borro.btn {
+  padding: 6px 20px;

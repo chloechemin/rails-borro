@@ -1,7 +1,10 @@
 class BookingsController < ApplicationController
   def index
-    @user = current_user
-    @bookings = @user.bookings
+    @post = Post.find(params[:post_id])
+    @bookings = Booking.where(post_id: @post.id)
+    @bookings.each do |booking|
+      @user = User.find(booking.user_id)
+    end
   end
 
   def new
@@ -41,16 +44,14 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.status = "Confirmed"
     @booking.save
-    redirect_to post_booking_path([@booking.post, @booking])
+    redirect_to post_bookings_path(@booking.post)
   end
 
   def decline
     @booking = Booking.find(params[:id])
     @booking.status = "Not confirmed"
     @booking.save
-    redirect_to post_booking_path([@booking.post, @booking])
-    # @booking.update(booking_params)
-    # redirect_to post_booking_path
+    redirect_to post_bookings_path(@booking.post)
   end
 
   def destroy

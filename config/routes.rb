@@ -8,20 +8,26 @@ Rails.application.routes.draw do
   end
 
   get '/pages/my_bookings', to: 'pages#my_bookings', as: :my_bookings
+  get '/pages/my_posts', to: 'pages#my_posts', as: :my_posts
+  get '/pages/my_profile', to: 'pages#my_profile', as: :my_profile
   get '/pages/search', to: 'pages#search'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :posts do
-    resources :bookings
+    resources :bookings do
+      resources :reviews, only: [:new, :create]
+    end
   end
   resources :help_requests do
     resources :helps, only: [:new, :create]
   end
-  resources :bookings, only: [:index] do
+  resources :bookings, only: :index do
     member do
       patch :accept
       patch :decline
     end
   end
+  resources :bookings, only: :destroy
+  resources :reviews, only: :destroy
 end

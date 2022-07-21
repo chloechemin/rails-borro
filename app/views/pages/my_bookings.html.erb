@@ -1,11 +1,14 @@
-<div class="main-container">
-  <h1> MY BOOKINGS </h1>
-  <% @bookings.each do |booking| %>
-    <strong><%= booking.post.title.capitalize() %></strong>
-    <p><%= booking.post.category %></p>
-    <p><%= booking.post.description %></p>
-    <p><%= booking.post.duration %></p>
-    <p><%= booking.post.location %></p>
-  <% end %>
-    <button type="button" class="btn btn-danger"><%= link_to "Back", post_path(@post) %></button>
+<div class="main-container borro">
+  <h2> MY BOOKINGS </h2>
+    <% @bookings.each do |booking| %>
+  <div class="white-card">
+      <strong><%= booking.post.title.capitalize() %></strong>
+      <i>(<%= booking.post.category %>)</i>
+      <p>From: <%= booking.start_time.to_time.strftime('%B %e at %l:%M %p')%> - <%= booking.end_time.to_time.strftime('%B %e at %l:%M %p')%></p>
+      <p>Location: <i><%= booking.post.location %></i></p>
+      <p>Status: <i><%= booking.status %></i></p>
+    <button type="button" class="btn btn-success"><%= link_to "VIEW POST", post_path(@post) %></button>
+  </div>
+    <% end %>
+    <button type="button" class="btn btn-primary"><%= link_to "BACK", root_path %></button>
 </div>
