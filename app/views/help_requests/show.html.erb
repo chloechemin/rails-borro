@@ -3,14 +3,20 @@
     <p><%= @help_request.description.capitalize %></p>
 
     <div class="white-card">
-      <p><%= @help_request.user.username %></p>
-      <p>MAP SHOWING <%= @help_request.location %></p>
+        <div style="width: 100%; height: 150px;"
+              data-controller="mapbox"
+              data-mapbox-markers-value="<%= @markers.to_json %>"
+              data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
 
-  <p><%= link_to "Back to list", help_requests_path %></p>
+    <div class="white-card">
+      <p><%= @help_request.user.username %></p>
+    </div>
+
+  <p><%= link_to "BACK", help_requests_path %></p>
   <button type="button" class="btn btn-success"><%= link_to "I WANT TO HELP", new_help_request_help_path(@help_request) %></button>
-  <button type="button" class="btn btn-success"><%= link_to "Edit", edit_help_request_path(@help_request) %></button>
-  <button type="button" class="btn btn-danger"><%=link_to "Delete",
+  <button type="button" class="btn btn-success"><%= link_to "EDIT", edit_help_request_path(@help_request) %></button>
+  <button type="button" class="btn btn-danger"><%=link_to "DELETE",
                       help_request_path(@help_request),
                       method: :delete,
                       data: { confirm: "Are you sure?" } %></button>

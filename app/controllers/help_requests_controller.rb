@@ -1,10 +1,24 @@
 class HelpRequestsController < ApplicationController
   def index
     @help_requests = HelpRequest.all
+    @markers = @help_requests.geocoded.map do |help_request|
+      {
+        lat: help_request.latitude,
+        lng: help_request.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { help_request: help_request }),
+        image_url: helpers.asset_url("Pin-peopletohelp.png")
+      }
+    end
   end
 
   def show
     @help_request = HelpRequest.find(params[:id])
+    @markers = [{
+      lat: @help_request.user.latitude,
+      lng: @help_request.user.longitude,
+      info_window: @help_request.user.address,
+      image_url: helpers.asset_url("Pin-service.png")
+    }]
   end
 
   def new
