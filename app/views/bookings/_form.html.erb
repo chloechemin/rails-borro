@@ -1,4 +1,4 @@
-<div id='post-booking-dates' data-unavailable="<%= @flat.unavailable_dates.to_json %>">
+<div id='post-booking-dates' data-unavailable="<%= @post.unavailable_dates.to_json %>">
   <%= simple_form_for [ @post, @booking ] do |f| %>
       <%= f.input :start_time, as: :string, type: :text %>
       <%= f.input :end_time, as: :string, type: :text %>
