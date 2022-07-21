@@ -20,6 +20,7 @@ class PostsController < ApplicationController
       info_window: @post.user.address,
       image_url: helpers.asset_url("Pin-service.png")
     }]
+    @bookings = Booking.where(post_id: @post.id)
   end
 
   def new
