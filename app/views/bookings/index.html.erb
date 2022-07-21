@@ -1,5 +1,6 @@
 <div class="main-container borro">
-  <h2> MANAGE BOOKINGS for <%= @post.title.capitalize %> </h2>
+  <h2><strong> MANAGE BOOKINGS </strong></h2>
+  <h3>You have <strong><%=@bookings.length%></strong> <%= @bookings.length == 1 ? "booking" : "bookings" %> for <i>'<%= @post.title.capitalize %></i>'</h3>
 <div class="white-card">
   <% @bookings.each do |booking| %>
 <ul style="list-style-type:none;">

@@ -7,7 +7,7 @@
       <p>From: <%= booking.start_time.to_time.strftime('%B %e at %l:%M %p')%> - <%= booking.end_time.to_time.strftime('%B %e at %l:%M %p')%></p>
       <p>Location: <i><%= booking.post.location %></i></p>
       <p>Status: <i><%= booking.status %></i></p>
-    <button type="button" class="btn btn-primary"><%= link_to "VIEW POST", post_path(@post) %></button>
+    <button type="button" class="btn btn-success"><%= link_to "VIEW POST", post_path(@post) %></button>
   </div>
     <% end %>
     <button type="button" class="btn btn-primary"><%= link_to "BACK", root_path %></button>
