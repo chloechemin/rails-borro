@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   get '/pages/my_bookings', to: 'pages#my_bookings', as: :my_bookings
+  get '/pages/my_posts', to: 'pages#my_posts', as: :my_posts
   get '/pages/search', to: 'pages#search'
 
 
