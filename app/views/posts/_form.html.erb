@@ -1,4 +1,5 @@
 <div class="main-container borro">
+<br>
   <h3><strong>They can borrow:</strong></h3>
     <div class="white-card">
     <%= simple_form_for(@post) do |f| %>
@@ -12,8 +13,8 @@
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.submit name: button_name, class: "btn btn-primary" %>
       <%= f.button :button do %>
-        <button type="button" class="btn btn-danger"><%= link_to "BACK", posts_path %></button>
-      <% end %>
+       <a href="/"><i class="fas fa-angle-left back-btn"></i></a>
+     <%  end %>
   <% end %>
   </div>
 </div>

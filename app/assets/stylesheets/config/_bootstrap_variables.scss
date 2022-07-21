@@ -48,6 +48,16 @@ $border-radius-sm: 20px;
   color: white;
 }
 
+
+.back-btn {
+  background-color: white;
+  border-radius: 50%;
+  color: $body-color;
+  padding: 2px 9px 2px 8px;
+  font-size: 25px;
+  position:absolute;
+  top:20px;
+  left:40px;
+
 .borro.btn {
   padding: 6px 20px;
-}
