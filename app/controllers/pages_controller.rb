@@ -18,6 +18,10 @@ class PagesController < ApplicationController
     @posts = Post.where(user_id: current_user.id)
   end
 
+  def my_profile
+    @user = current_user
+  end
+
   def search
   end
 
