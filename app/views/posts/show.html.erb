@@ -1,4 +1,5 @@
 <div class="main-container borro">
+<br>
     <h2><strong><%=@post.title.capitalize %></strong></h2>
     <p><%= @post.description.capitalize %></p>
 
@@ -31,8 +32,7 @@
               data-mapbox-markers-value="<%= @markers.to_json %>"
               data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
-
-  <button type="button" class="btn btn-primary"><%=link_to "Back", pages_search_path%>
+  <a href="/pages/search"><i class="fas fa-angle-left back-btn"></i></a>
   <button type="button" class="btn btn-success"><%= link_to "CHECK AVAILABILITIES", new_post_booking_path(@post) %></button>
   <button type="button" class="btn btn-success"><%= link_to "Edit", edit_post_path(@post) %></button>
   <button type="button" class="btn btn-danger"><%=link_to "Delete",

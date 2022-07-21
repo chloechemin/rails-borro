@@ -11,7 +11,6 @@
     <p><%= @booking.status %> by <%=@booking.post.user.username %></p>
   </div>
 
-  <p><%= link_to "Back to posts", posts_path %></p>
   <button type="button" class="btn btn-success"><%= link_to "Edit", edit_post_booking_path(@booking) %></button>
   <button type="button" class="btn btn-danger"><%=link_to "Cancel",
                           post_booking_path(@booking),
