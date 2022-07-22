@@ -11,6 +11,5 @@ const application = Application.start()
 const context = require.context("controllers", true, /_controller\.js$/)
 application.load(definitionsFromContext(context))
 
-
-import flatpickr from "flatpickr"
-application.load(flatpickr, "flatpickr")
+import { flatpickrFunction } from "./flatpicker_controller"
+flatpickrFunction();
