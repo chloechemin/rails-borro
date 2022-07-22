@@ -1,7 +1,7 @@
-<div id='post-booking-dates' data-unavailable="<%= @post.unavailable_dates.to_json %>">
+<div id='post-booking-dates' data-unavailable="<%= current_user = @post.user ? @post.unavailable_dates.to_json : nil %>">
   <%= simple_form_for [ @post, @booking ] do |f| %>
-      <%= f.input :start_time, as: :string, type: :text, placeholder:"From" %>
-      <%= f.input :end_time, as: :string, type: :text, placeholder:"To"%>
+      <%= f.input :start_time, as: :string, type: :text, placeholder:"From",label: "Start Time/Date" %>
+      <%= f.input :end_time, as: :string, type: :text, placeholder:"To",label: "End Time/Date"%>
       <%= f.input :message %> <p>Introduce yourself, explain the purpose of your booking and share your catch-up preferences.</p>
       <%= f.submit name: button_name, class: "btn btn-primary" %>
        <%= f.button :button do %>

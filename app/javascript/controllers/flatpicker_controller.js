@@ -15,6 +15,7 @@ const flatpickrFunction = function() {
       dateFormat: "Y-m-d H:i",
       altInput: true,
       altFormat: "F j, Y H:i",
+      minDate: "today"
     });
 
     console.log('Controller Connected')
