@@ -16,7 +16,6 @@ flatpickr(startDateInput, {
 });
 
 console.log('Controller Connected')
-
 startDateInput.addEventListener("change", (e) => {
   if (startDateInput != "") {
     endDateInput.disabled = false
