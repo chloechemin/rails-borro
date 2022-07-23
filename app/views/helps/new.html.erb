@@ -1,7 +1,7 @@
 <div class="main-container borro">
   <h3> <strong> Your message to <%= @help_request.user.username.capitalize %></strong></h3>
   <%= simple_form_for [ @help_request, @help ] do |f| %>
-      <%= f.input :message %> <p>Explain how you can help and share your catch-up preferences.</p>
+      <%= f.input :message, hint: "Explain how you can help and share your catch-up preferences." %>
       <%= f.button :submit, 'SEND', class: "btn btn-primary" %>
       <%= f.button :button do %>
         <button type="button" class="btn btn-success"><%= link_to "Back", root_path %></button>
