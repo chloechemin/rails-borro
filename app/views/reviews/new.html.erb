@@ -1,7 +1,8 @@
 <div class="main-container borro">
-  <h3>Add your review</h3>
+  <h2> <strong>How was your experience?</strong></h2>
+  <br>
     <%= simple_form_for [@post, @booking, @review] do |f| %>
-      <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating"%>
+      <%= f.input :rating, as: :range, input_html: { min: 1, max:5 }, required: true%>
       <%= f.input :comment, placeholder: "Add your review here..." %>
       <%= f.submit name: "Send", class: "btn btn-primary" %>
     <% end %>
