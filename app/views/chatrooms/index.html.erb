@@ -1,0 +1,10 @@
+<div class="main-container borro">
+  <h2><strong> Chatrooms </strong></h2>
+  <div class="white-card">
+    <ul style="list-style-type:none;">
+      <% @chatrooms.each do |chatroom| %>
+        <li><%= link_to chatroom.name, chatroom_path(chatroom) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

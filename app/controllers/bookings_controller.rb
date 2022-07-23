@@ -24,6 +24,16 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.status = "Not confirmed"
     if @booking.save
+      @chatroom = Chatroom.new({ name: "#{@post.title} - #{current_user.username}" })
+      @chatroom.save
+      @message = Message.new({ content: @booking.message })
+      @message.chatroom = @chatroom
+      @message.user = current_user
+      @message.save
+      @participant_user = Participant.new({ chatroom_id: @chatroom.id, user_id: current_user.id })
+      @participant_user.save
+      @participant_post_user = Participant.new({ chatroom_id: @chatroom.id, user_id: @post.user.id })
+      @participant_post_user.save
       redirect_to post_booking_path(@post, @booking)
     else
       render :new
