@@ -1,4 +1,5 @@
 import flatpickr from 'flatpickr';
+import 'flatpickr/dist/themes/confetti';
 
 const flatpickrFunction = function() {
   document.addEventListener("turbolinks:load", function() {
@@ -15,7 +16,8 @@ const flatpickrFunction = function() {
       dateFormat: "Y-m-d H:i",
       altInput: true,
       altFormat: "F j, Y H:i",
-      minDate: "today"
+      minDate: "today",
+      disableMobile: true
     });
 
     console.log('Controller Connected')
@@ -30,6 +32,7 @@ const flatpickrFunction = function() {
         dateFormat: "Y-m-d H:i",
         altInput: true,
         altFormat: "F j, Y H:i",
+        disableMobile: true
         });
       })
     };
