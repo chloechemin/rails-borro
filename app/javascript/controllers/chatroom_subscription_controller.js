@@ -1,13 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
-import { createConsumer } from "@rails/actioncable"
+import consumer from "../channels/consumer"
 
 // Connects to data-controller="chatroom-subscription"
 export default class extends Controller {
   static values = { chatroomId: Number }
   static targets = ["messages"]
 
+
   connect() {
-    this.channel = createConsumer().subscriptions.create(
+    this.channel = consumer.subscriptions.create(
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       { received: data => this.#insertMessageAndScrollDown(data) }
     )
@@ -16,11 +17,13 @@ export default class extends Controller {
 
   #insertMessageAndScrollDown(data) {
     this.messagesTarget.insertAdjacentHTML("beforeend", data)
-    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-    console.log(`hello`)
+    window.scrollTo(0, document.body.scrollHeight)
+    console.log(this.messagesTarget.scrollHeight)
   }
 
   resetForm(event) {
     event.target.reset()
+    // event.preventDefault()
+    console.log(`data-action is working`)
   }
 }

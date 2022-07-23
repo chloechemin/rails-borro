@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'search/no_result'
   devise_for :users
   root to: 'pages#home'
-  resources :chatrooms, only: [:show] do
+  resources :chatrooms, only: [:index, :show] do
     resources :messages, only: [:create]
   end
 

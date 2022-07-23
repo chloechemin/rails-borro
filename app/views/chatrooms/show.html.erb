@@ -1,7 +1,7 @@
-<div class="container chatroom"
+<div class="main-container borro"
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  </h1>#<%= @chatroom.name %></h1>
+  <h1><%= @chatroom.name %></h1>
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
@@ -11,7 +11,7 @@
 
   <%= simple_form_for [@chatroom, @message],
     remote: true,
-    html: {data: {action: "turbo:submit-end->chatroom-subscription#resetForm"},
+    html: {data: {action: "ajax:success->chatroom-subscription#resetForm"},
     class: "d-flex"} do |f|
     %>
   <%= f.input :content,
