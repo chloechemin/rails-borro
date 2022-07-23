@@ -1,11 +1,19 @@
   <%= simple_form_for [ @post, @booking ] do |f| %>
       <%= f.input :start_time %>
       <%= f.input :end_time %>
-      <%= f.input :message %>
-      <p>Introduce yourself, explain the purpose of your booking and share your catch-up preferences.</p>
+      <%= f.input :message, required: true%>
+      <small><p>Introduce yourself, explain the purpose of your booking and share your catch-up preferences.</p></small>
+      <strong><%= f.input :check_box, required: true, wrapper: :custom_boolean_switch,label: "Borro Agreements"  %>
+      </strong>
 
-      <%= f.input :check_box, wrapper: :custom_boolean_switch %>
+      <div class="white-card" style="padding-top: 0px;">
+      <small>      <cite>
+      <p>Always be nice and supportive of everyone in this community. Look after the things you borrowed just like your own and have a good time with your heighbours just like you would with your fridends! :)
+     </p>
 
+     <p> Team Borro wishes you happy!</p></cite>
+    </small>
+      </div>
       <%= f.submit name: button_name, class: "btn btn-primary" %>
 
       <%= f.button :button do %>

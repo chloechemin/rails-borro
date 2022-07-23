@@ -7,7 +7,7 @@ class Booking < ApplicationRecord
   has_one :review, dependent: :destroy
 
   validates :start_time, :end_time, :status, :message, presence: true
-  validates :check_box, inclusion: { in: [true] }
+  validates :check_box, acceptance: true
   validates :status, inclusion: { in: ['Not confirmed', 'Confirmed'] }
 
 end

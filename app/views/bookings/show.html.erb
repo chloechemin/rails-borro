@@ -11,9 +11,10 @@
     <p><%= @booking.status %> by <%=@booking.post.user.username %></p>
   </div>
 
-  <button type="button" class="btn btn-success"><%= link_to "Edit", edit_post_booking_path(@booking) %></button>
-  <button type="button" class="btn btn-danger"><%=link_to "Cancel",
+  <button type="button" class="btn btn-primary"><%= link_to "Edit", edit_post_booking_path(@post, @booking) %></button>
+  <button type="button" class="btn btn-success"><%=link_to "Cancel my booking",
                           post_booking_path(@booking),
                           method: :delete,
                           data: { confirm: "Are you sure?" } %></button>
+  <button type="button" class="btn btn-primary"><%= link_to "See my bookings", my_bookings_path() %></button>
 </div>
