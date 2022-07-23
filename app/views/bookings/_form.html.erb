@@ -3,9 +3,12 @@
       <%= f.input :end_time %>
       <%= f.input :message %>
       <p>Introduce yourself, explain the purpose of your booking and share your catch-up preferences.</p>
-      <%= f.input :check_box, :as => :boolean, :input_html => { :checked => "unchecked" } %>
+
+      <%= f.input :check_box, wrapper: :custom_boolean_switch %>
+
       <%= f.submit name: button_name, class: "btn btn-primary" %>
-       <%= f.button :button do %>
+
+      <%= f.button :button do %>
          <a href="/"><i class="fas fa-angle-left back-btn"></i></a>
-     <%  end %>
+      <% end %>
     <% end %>
