@@ -13,6 +13,7 @@
 
   <button type="button" class="btn btn-primary"><%= link_to "Edit", edit_post_booking_path(@post, @booking) %></button>
   <button type="button" class="btn btn-success"><%=link_to "Cancel my booking",
+
                           post_booking_path(@booking),
                           method: :delete,
                           data: { confirm: "Are you sure?" } %></button>

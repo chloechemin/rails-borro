@@ -1,22 +1,20 @@
+<div id='post-booking-dates' data-unavailable="<%=@post.unavailable_dates.to_json %>">
   <%= simple_form_for [ @post, @booking ] do |f| %>
-      <%= f.input :start_time %>
-      <%= f.input :end_time %>
-      <%= f.input :message, required: true%>
-      <small><p>Introduce yourself, explain the purpose of your booking and share your catch-up preferences.</p></small>
-      <strong><%= f.input :check_box, required: true, wrapper: :custom_boolean_switch,label: "Borro Agreements"  %>
-      </strong>
+      <%= f.input :start_time, as: :string, type: :text, placeholder:"From",label: "Start Time/Date" %>
+      <%= f.input :end_time, as: :string, type: :text, placeholder:"To",label: "End Time/Date"%>
+      <%= f.input :message %> <small><p>Introduce yourself, explain the purpose of your booking and share your catch-up preferences.</p></small>
 
       <div class="white-card" style="padding-top: 0px;">
-      <small>      <cite>
-      <p>Always be nice and supportive of everyone in this community. Look after the things you borrowed just like your own and have a good time with your heighbours just like you would with your fridends! :)
-     </p>
-
-     <p> Team Borro wishes you happy!</p></cite>
-    </small>
+      <small><cite>
+      <p>Always be nice and supportive of everyone in this community. Look after the things you borrowed just like your own and have a good time with your heighbours just like you would with your fridends! :) </p>
+      <p>Team Borro wishes you happy!</p>
+      </cite></small>
       </div>
+
       <%= f.submit name: button_name, class: "btn btn-primary" %>
 
       <%= f.button :button do %>
          <a href="/"><i class="fas fa-angle-left back-btn"></i></a>
       <% end %>
     <% end %>
+</div>
