@@ -4,7 +4,7 @@
   data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 <div class="main-container borro">
-  <h3><strong><%=@posts.length%> results </strong>near you</h3>
+  <h3><strong><h3><strong><%= pluralize(@posts.count, "Result") %> </strong>near you</h3> </strong>near you</h3>
       <% @posts.each do |post| %>
     <div class="white-card">
       <%= link_to post.title.capitalize, post_path(post) %>
