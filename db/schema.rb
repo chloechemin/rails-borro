@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2022_07_21_113113) do
-
+ActiveRecord::Schema.define(version: 2022_07_22_085238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +126,7 @@ ActiveRecord::Schema.define(version: 2022_07_21_113113) do
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
   end
 
@@ -163,4 +162,5 @@ ActiveRecord::Schema.define(version: 2022_07_21_113113) do
   add_foreign_key "participants", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "users"
 end
