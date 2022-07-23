@@ -5,13 +5,21 @@
 
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
+      <% if @post.photos.attached? == true %>
       <div class="carousel-item active">
-         <%= cl_image_tag @post.photos.first.key, crop: :thumb, class:"d-block w-100" %>
+        <%= cl_image_tag @post.photos.first.key, crop: :thumb, class:"d-block w-100"%>
       </div>
       <% @post.photos[1..-1].each do |photo| %>
         <div class="carousel-item">
           <%= cl_image_tag photo.key, crop: :thumb, class:"d-block w-100" %>
         </div>
+      <% end %>
+      <% else %>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="https://source.unsplash.com/random/?<%= @post.title %>" alt="First slide">
+        </div>
+      </div>
       <% end %>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
