@@ -1,4 +1,11 @@
 <div class="main-container borro">
+
+  <a href="/posts"><i class="fas fa-angle-left back-btn"></i></a>
+
+  <div class="character-container">
+    <%= image_tag("characters/booking-show.png") %>
+  </div>
+
   <h2>Your booking request <strong>has been sent to <%= @booking.post.user.username %>.</strong></h2>
 
   <div class="white-card">
@@ -12,7 +19,7 @@
   </div>
 
   <button type="button" class="btn btn-primary"><%= link_to "Edit", edit_post_booking_path(@booking) %></button>
-  <button type="button" class="btn btn-success"><%=link_to "Cancel",
+  <button type="button" class="btn btn-primary"><%=link_to "Cancel",
 
                           post_booking_path(@booking),
                           method: :delete,
