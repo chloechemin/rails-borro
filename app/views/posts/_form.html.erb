@@ -5,17 +5,19 @@
     <%= image_tag("characters/postnew.png", height: 232, width: 326) %>
   </div>
   <h3><strong>They can borrow:</strong></h3>
-    <div class="white-card">
+  <div class="category-white-card">
     <%= simple_form_for(@post) do |f| %>
-      <%= f.input :title %>
-      <%= f.input :category, as: :radio_buttons, collection: [['product', 'product'], ['service', 'service']], input_html: { class: 'my-class' }%>
-      <%= f.input :description %>
-      <%= f.input :location,
-              input_html: { data: { geocoder_target: "location" }, class: "d-none"},
-              wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
-      <%= f.input :duration %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.submit button_name, class: "btn btn-primary" %>
+      <%= f.input :category, as: :radio_buttons, collection: [['YOUR THINGS', 'product'], ['YOUR TIME', 'service']], input_html: { class: 'my-class' }, wrapper: :vertical_collection_inline, legend_tag: false %>
+  </div>
+  <div class="white-card">
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :location,
+            input_html: { data: { geocoder_target: "location" }, class: "d-none"},
+            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+    <%= f.input :duration %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit button_name, class: "btn btn-primary" %>
   <% end %>
   </div>
 </div>

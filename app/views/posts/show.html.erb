@@ -1,6 +1,5 @@
 <div class="main-container borro">
-
-  <a href="/pages/search"><i class="fas fa-angle-left back-btn"></i></a>
+<%= link_to "", :back, class:"fas fa-angle-left back-btn"%>
 
   <div class="character-container">
     <%= image_tag("characters/post-show.png") %>
@@ -45,8 +44,6 @@
           data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" >
     </div>
   </div>
-
- <%= link_to "", :back, class:"fas fa-angle-left back-btn"%>
 
   <div class="white-card">
     <p><strong><%= @post.user.username %></strong></p>

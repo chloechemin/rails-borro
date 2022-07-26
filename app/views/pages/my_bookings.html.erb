@@ -1,7 +1,8 @@
 <div class="main-container borro">
-  <h2> MY BOOKINGS </h2>
-    <% @bookings.each do |booking| %>
+<%= link_to "", :back, class:"fas fa-angle-left back-btn"%>
   <div class="white-card">
+  <h1> MY BOOKINGS </h1>
+    <% @bookings.each do |booking| %>
       <strong><%= booking.post.title.capitalize() %></strong>
       <i>(<%= booking.post.category %>)</i>
       <p>From: <%= booking.start_time.to_time.strftime('%B %e at %l:%M %p')%> - <%= booking.end_time.to_time.strftime('%B %e at %l:%M %p')%></p>
