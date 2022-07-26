@@ -41,6 +41,12 @@ $border-radius-sm: 20px;
   line-height: 1;
 }
 
+.borro h4 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+}
+
 .borro button a {
   text-decoration: none;
   font-weight: 700;
@@ -62,4 +68,8 @@ $border-radius-sm: 20px;
 .borro.btn {
   padding: 6px 20px;
 }
+}
+
+.remove-margin p {
+  margin-bottom: 2px;
 }
