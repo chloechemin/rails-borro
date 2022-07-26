@@ -12,31 +12,34 @@
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <% if @post.photos.attached? == true %>
-      <div class="carousel-item active">
-        <%= cl_image_tag @post.photos.first.key, crop: :thumb, class:"d-block w-100"%>
-      </div>
-      <% @post.photos[1..-1].each do |photo| %>
-        <div class="carousel-item">
-          <%= cl_image_tag photo.key, crop: :thumb, class:"d-block w-100" %>
-        </div>
-      <% end %>
-      <% else %>
-      <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="https://source.unsplash.com/random/?<%= @post.title %>" alt="First slide">
+          <%= cl_image_tag @post.photos.first.key, crop: :thumb, class:"d-block w-100"%>
         </div>
-      </div>
+        <% @post.photos[1..-1].each do |photo| %>
+          <div class="carousel-item">
+            <%= cl_image_tag photo.key, crop: :thumb, class:"d-block w-100" %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="https://source.unsplash.com/random/?<%= @post.title %>" alt="First slide">
+          </div>
+        </div>
       <% end %>
     </div>
+
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
+
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+
 
   <div class="white-card">
     <div style="width: 100%; height: 150px;"
@@ -48,19 +51,23 @@
 
   <div class="white-card">
     <p><strong><%= @post.user.username %></strong></p>
+    <p> 4.78 out of 5</p>
     <% @bookings.each do |booking| %>
       <div class="gray-card">
-        <p><%= booking.user.username %></p>
-        <p><%= booking.review.comment unless booking.review == nil %></p>
+      <%# COMMENT - include reviews %>
+        <p><%=booking.user.username - booking.review.comment unless booking.review == nil %></p>
       </div>
     <% end %>
   </div>
 
-  <button type="button" class="btn btn-primary m-1"><%= link_to "CHECK AVAILABILITIES", new_post_booking_path(@post) %></button>
-  <button type="button" class="btn btn-primary m-1"><%= link_to "EDIT", edit_post_path(@post) %></button>
-  <button type="button" class="btn btn-primary m-1"><%=link_to "DELETE",
-                      post_path(@post),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
-  </button>
+  <% if current_user.id == @post.user_id %>
+    <button type="button" class="btn btn-primary m-1"><%= link_to "EDIT", edit_post_path(@post) %></button>
+    <button type="button" class="btn btn-primary m-1"><%=link_to "DELETE",
+                        post_path(@post),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %>
+    </button>
+  <% else  %>
+   <button type="button" class="btn btn-primary m-1"><%= link_to "CHECK AVAILABILITIES", new_post_booking_path(@post) %></button>
+   <% end  %>
 </div>

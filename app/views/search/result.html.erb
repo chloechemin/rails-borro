@@ -8,6 +8,7 @@
       <% @posts.each do |post| %>
     <div class="white-card">
       <%= link_to post.title.capitalize, post_path(post) %>
+      <p>Helper: <%= post.user.username %></p> <%# this line to be deleted %>
       <p>Location: <%= post.location %></p>
       <p>For up to <%= post.duration %> days</p>
     </div>
