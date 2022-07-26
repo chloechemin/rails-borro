@@ -4,15 +4,27 @@
   <div class="white-card">
     <div class="card-content">
       <h2><strong>Want to help</strong> your neighbours?</h2>
-      <button type="button" class="btn btn-success mt-1"><%=link_to "BE A LENDER", new_post_path %>
-      <button type="button" class="btn btn-success mt-1"><%=link_to "SOLVE A REQUEST", help_requests_path%>
+      <div class="d-flex justify-content-around">
+        <div class="d-flex flex-column">
+          <button type="button" class="btn btn-success mt-1"><%=link_to "BE A LENDER", new_post_path %>
+          <button type="button" class="btn btn-success mt-1"><%=link_to "COMMUNITY MAP", help_requests_path%>
+        </div>
+        <div class="character-container">
+          <%= image_tag("characters/homepage-lender.png") %>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="white-card">
-    <div class="card-content">
-      <h2><strong>Need help</strong> from your neighbours?</h2>
-      <button type="button" class="btn btn-primary mt-1"><%=link_to "BORROW", pages_search_path%>
+    <div class="card-content d-flex justify-content-around">
+      <div class="d-flex flex-column">
+        <h2><strong>Need help</strong> from your neighbours?</h2>
+        <button type="button" class="btn btn-primary mt-1"><%=link_to "BORROW", pages_search_path%>
+      </div>
+        <div class="character-container">
+          <%= image_tag("characters/homepage-borrower.png") %>
+        </div>
     </div>
   </div>
 </div>

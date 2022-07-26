@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     @user = current_user
     @bookings = Booking.where(user_id: current_user.id)
     @bookings.each do |booking|
-      @post = Post.find(booking.post_id)
+    @post = Post.find(booking.post_id)
     end
   end
 
@@ -26,6 +26,9 @@ class PagesController < ApplicationController
   end
 
   def result
+  end
+
+  def post_confirmation
   end
 
 end
