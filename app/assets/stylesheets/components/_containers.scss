@@ -1,5 +1,13 @@
 .main-container {
   // width: 375px;
   height: auto;
-  padding: 50px 40px 80px 40px;
+  padding: 50px 30px 80px 30px;
+}
+
+.character-container {
+  margin: 50px 30px;
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
 }

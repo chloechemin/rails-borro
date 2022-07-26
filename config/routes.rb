@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/pages/my_posts', to: 'pages#my_posts', as: :my_posts
   get '/pages/my_profile', to: 'pages#my_profile', as: :my_profile
   get '/pages/search', to: 'pages#search'
+  get '/pages/post_confirmation', to: 'pages#post_confirmation', as: :post_confirmation
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
