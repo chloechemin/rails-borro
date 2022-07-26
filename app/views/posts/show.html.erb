@@ -1,5 +1,11 @@
 <div class="main-container borro">
-<br>
+
+  <a href="/pages/search"><i class="fas fa-angle-left back-btn"></i></a>
+
+  <div class="character-container">
+    <%= image_tag("characters/post-show.png") %>
+  </div>
+
   <h2><strong><%=@post.title.capitalize %></strong></h2>
   <p><%= @post.description.capitalize %></p>
 
@@ -42,7 +48,6 @@
 
  <%= link_to "", :back, class:"fas fa-angle-left back-btn"%>
 
-
   <div class="white-card">
     <p><strong><%= @post.user.username %></strong></p>
     <% @bookings.each do |booking| %>
@@ -53,9 +58,9 @@
     <% end %>
   </div>
 
-  <button type="button" class="btn btn-success"><%= link_to "CHECK AVAILABILITIES", new_post_booking_path(@post) %></button>
-  <button type="button" class="btn btn-success"><%= link_to "EDIT", edit_post_path(@post) %></button>
-  <button type="button" class="btn btn-danger"><%=link_to "DELETE",
+  <button type="button" class="btn btn-primary m-1"><%= link_to "CHECK AVAILABILITIES", new_post_booking_path(@post) %></button>
+  <button type="button" class="btn btn-primary m-1"><%= link_to "EDIT", edit_post_path(@post) %></button>
+  <button type="button" class="btn btn-primary m-1"><%=link_to "DELETE",
                       post_path(@post),
                       method: :delete,
                       data: { confirm: "Are you sure?" } %>

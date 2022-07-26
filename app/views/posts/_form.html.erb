@@ -1,6 +1,9 @@
 <div class="main-container borro">
 <%= link_to "", :back, class:"fas fa-angle-left back-btn"%>
 <br>
+  <div class="character-container">
+    <%= image_tag("characters/postnew.png", height: 232, width: 326) %>
+  </div>
   <h3><strong>They can borrow:</strong></h3>
     <div class="white-card">
     <%= simple_form_for(@post) do |f| %>

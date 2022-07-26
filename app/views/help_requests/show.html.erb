@@ -1,4 +1,11 @@
 <div class="main-container borro">
+
+  <a href="/help_requests"><i class="fas fa-angle-left back-btn"></i></a>
+
+  <div class="character-container">
+    <%= image_tag("characters/help-show.png") %>
+  </div>
+
     <h2><strong><%=@help_request.title.capitalize %></strong></h2>
     <p><%= @help_request.description.capitalize %></p>
 

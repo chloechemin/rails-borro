@@ -1,4 +1,7 @@
 <div class="main-container borro">
+  <div class="character-container">
+    <%= image_tag("characters/helprequest-new.png") %>
+  </div>
   <%= simple_form_for(@help_request) do |f| %>
       <%= f.input :title %>
       <%= f.input :category, :collection => %w[product service]%>
