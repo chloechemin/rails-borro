@@ -1,8 +1,8 @@
 <div class="main-container borro">
-<%= link_to "", :back, class:"fas fa-angle-left back-btn"%>
-  <div class="white-card">
+<%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
   <h1> MY BOOKINGS </h1>
     <% @bookings.each do |booking| %>
+  <div class="white-card">
       <strong><%= booking.post.title.capitalize() %></strong>
       <i>(<%= booking.post.category %>)</i>
       <p>From: <%= booking.start_time.to_time.strftime('%B %e at %l:%M %p')%> - <%= booking.end_time.to_time.strftime('%B %e at %l:%M %p')%></p>
@@ -10,7 +10,6 @@
       <p>Status: <i><%= booking.status %></i></p>
     <button type="button" class="btn btn-success"><%= link_to "EDIT", edit_post_booking_path(@post, booking) %></button>
     <button type="button" class="btn btn-success"><%= link_to "VIEW POST", post_path(@post) %></button>
-  </div>
     <% end %>
-    <button type="button" class="btn btn-primary"><%= link_to "BACK", root_path %></button>
+  </div>
 </div>

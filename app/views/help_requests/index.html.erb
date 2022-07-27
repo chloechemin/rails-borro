@@ -4,4 +4,5 @@
       data-mapbox-markers-value="<%= @markers.to_json %>"
       data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
+    <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
 </div>
