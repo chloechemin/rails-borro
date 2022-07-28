@@ -4,10 +4,10 @@
   <h1 class="d-flex justify-content-center"><%= @user.username %></h1>
     <div class="white-card">
       <ul style="list-style-type:none;">
-        <li><button type="button" class="btn btn-success mt-2"><%= link_to "Personal Infomation", edit_user_registration_path(@user)%></button></li>
-        <li><button type="button" class="btn btn-success mt-2"><%= link_to "Notifications", :back %></button></li>
-        <li><button type="button" class="btn btn-success mt-2"><%= link_to "My Posts", my_posts_path %></button></li>
-        <li><button type="button" class="btn btn-success mt-2"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></button></li>
+        <li><button type="button" class="btn btn-success mt-2"><%= link_to "PERSONAL INFORMATION", edit_user_registration_path(@user)%></button></li>
+        <li><button type="button" class="btn btn-success mt-2"><%= link_to "NOTIFICATIONS", :back %></button></li>
+        <li><button type="button" class="btn btn-success mt-2"><%= link_to "MY POSTS", my_posts_path %></button></li>
+        <li><button type="button" class="btn btn-success mt-2"><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></button></li>
       </ul>
     </div>
 </div>
