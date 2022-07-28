@@ -4,6 +4,7 @@
   data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 <div class="main-container borro">
+<%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
   <h3><strong><h3><strong><%= pluralize(@posts.count, "Result") %> </strong>near you</h3> </strong>near you</h3>
       <% @posts.each do |post| %>
     <div class="white-card">
@@ -12,6 +13,4 @@
       <p>For up to <%= post.duration %> days</p>
     </div>
   <% end %>
-  <a href="/pages/search"><i class="fas fa-angle-left back-btn"></i></a>
-  <button type="button" class="btn btn-primary"><%=link_to "Back", pages_search_path%>
 </div>
