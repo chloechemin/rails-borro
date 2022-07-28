@@ -1,7 +1,5 @@
 <div class="main-container borro">
-
-  <a href="/posts"><i class="fas fa-angle-left back-btn"></i></a>
-
+<%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
   <div class="character-container">
     <%= image_tag("characters/booking-show.png") %>
   </div>
@@ -18,11 +16,10 @@
     <p><%= @booking.status %> by <%=@booking.post.user.username %></p>
   </div>
 
-  <button type="button" class="btn btn-primary"><%= link_to "Edit", edit_post_booking_path(@booking) %></button>
-  <button type="button" class="btn btn-primary"><%=link_to "Cancel",
-
+  <button type="button" class="btn btn-primary"><%= link_to "EDIT", edit_post_booking_path(@booking) %></button>
+  <button type="button" class="btn btn-primary"><%=link_to "CANCEL",
                           post_booking_path(@booking),
                           method: :delete,
                           data: { confirm: "Are you sure?" } %></button>
-  <button type="button" class="btn btn-primary"><%= link_to "See my bookings", my_bookings_path() %></button>
+  <button type="button" class="btn btn-primary"><%= link_to "SEE MY BOOKINGS", my_bookings_path() %></button>
 </div>

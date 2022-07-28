@@ -1,5 +1,6 @@
 <div class="main-container borro">
-  <h2> MY POSTS </h2>
+<%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
+  <h1> MY POSTS </h1>
     <% @posts.each do |post| %>
   <div class="white-card">
       <strong><%= post.title.capitalize() %></strong><i> (<%= post.category %>)</i>
@@ -8,5 +9,4 @@
     <button type="button" class="btn btn-success mt-1"><%= link_to "MANAGE BOOKINGS", post_bookings_path(post) %></button>
   </div>
     <% end %>
-    <button type="button" class="btn btn-primary"><%= link_to "BACK", root_path %></button>
 </div>
