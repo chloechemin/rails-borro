@@ -1,35 +1,34 @@
 <div class="main-container borro">
 
-<%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
+    <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
 
   <div class="character-container">
     <%= image_tag("characters/search-borrower.png") %>
   </div>
-<div class="white-card">
+
   <div class="center-content">
-  <h3>You need to borrow:</h3>
+    <h3>You need to borrow:</h3>
 
-  <form action="/search/result" accept-charset="UTF-8" method="get">
+    <form action="/search/result" accept-charset="UTF-8" method="get">
 
-    <%# <label for="query"></label> %>
-      <input class="my-class" type="radio" value="service" name="category" id="category_service" checked>
-      <label for="category_service">their time</label>
+    <div class="toggle-card">
+      <%# <label for="query"></label> %>
+        <input class="my-class" type="radio" value="service" name="category" id="category_service" checked>
+        <label for="category_service">their time</label>
 
-      <input class="my-class" type="radio" value="product" name="category" id="category_product">
-      <label for="category_product">their things</label>
+        <input class="my-class" type="radio" value="product" name="category" id="category_product">
+        <label for="category_product">their things</label>
+    </div>
+    <div class="white-card">
+        <p><input class="input_field" placeholder="Camping gear" type="text" name="description" id="description"></p>
 
-      <p><input class="input_field" placeholder="Camping gear" type="text" name="description" id="description"></p>
+        <p><input class="input_field" step="0.5" min="1.0" max="20.0" placeholder="0" type="number" name="duration" id="duration"> Days</p>
 
-      <p><input class="input_field" step="0.5" min="1.0" max="20.0" placeholder="0" type="number" name="duration" id="duration"> Days</p>
+        <p><input class="input_field" placeholder="Distance" type="text" name="distance" id="distance"> km</p>
 
-      <p><input class="input_field" placeholder="Distance" type="text" name="distance" id="distance"> km</p>
+      <input type="submit" name="commit" value="Search" data-disable-with="Search"  class="btn btn-primary">
 
-    <input type="submit" name="commit" value="Search" data-disable-with="Search"  class="btn btn-primary" style="margin-left: 10px; border-radius: 10px; position: absolute;
-    margin-right: 160px;">
-
-  </form>
-
+    </div>
+     </form>
   </div>
-
-</div>
 </div>
