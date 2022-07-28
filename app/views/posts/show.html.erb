@@ -11,28 +11,33 @@
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <% if @post.photos.attached? == true %>
-      <div class="carousel-item active">
-        <%= cl_image_tag @post.photos.first.key, crop: :thumb, class:"d-block w-100"%>
-      </div>
-      <% @post.photos[1..-1].each do |photo| %>
-        <div class="carousel-item">
-          <%= cl_image_tag photo.key, crop: :thumb, class:"d-block w-100" %>
+        <div class="carousel-item active">
+          <%= cl_image_tag @post.photos.first.key, crop: :thumb, class:"d-block w-100"%>
         </div>
-      <% end %>
+        <% @post.photos[1..-1].each do |photo| %>
+          <div class="carousel-item">
+            <%= cl_image_tag photo.key, crop: :thumb, class:"d-block w-100" %>
+          </div>
+        <% end %>
       <% else %>
+
       <div>
       </div>
+
       <% end %>
     </div>
+
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
+
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+
 
   <div class="white-card">
     <p><strong>Let's meet here:</strong></p>
@@ -45,6 +50,7 @@
     </div>
   </div>
 
+
   <div class="white-card">
     <div class="d-flex justify-content-around">
       <div class="d-flex flex-column">
@@ -53,7 +59,7 @@
         </div>
         <p><small> <i class="fas fa-star"></i> <%= rand(3.8..5.0).round(1) %> out of 5 </small></p>
       </div>
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/chloechemin", class: "avatar-large", alt: "avatar-large" %>
+      <%= image_tag (@post.user.avatar_thumbnail), class: "avatar-large", alt: "avatar-large" %>
     </div>
 
     <% @bookings.each do |booking| %>
@@ -68,11 +74,18 @@
     <% end %>
   </div>
 
-  <button type="button" class="btn btn-primary m-1"><%= link_to "CHECK AVAILABILITIES", new_post_booking_path(@post) %></button>
-  <button type="button" class="btn btn-primary m-1"><%= link_to "EDIT", edit_post_path(@post) %></button>
-  <button type="button" class="btn btn-primary m-1"><%=link_to "DELETE",
-                      post_path(@post),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
-  </button>
+
+
+  <% if current_user.id == @post.user_id %>
+    <button type="button" class="btn btn-primary m-1"><%= link_to "EDIT", edit_post_path(@post) %></button>
+    <button type="button" class="btn btn-success m-1"><%=link_to "DELETE",
+                        post_path(@post),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %>
+    </button>
+      <button type="button" class="btn btn-primary m-1"><%= link_to "Back", :back %></div>
+  <% else  %>
+   <button type="button" class="btn btn-primary m-1"><%= link_to "CHECK AVAILABILITIES", new_post_booking_path(@post) %></button>
+    <button type="button" class="btn btn-primary m-1"><%= link_to "Back", :back %></div>
+   <% end  %>
 </div>

@@ -1,7 +1,18 @@
 <div class="main-container borro"
+
+
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1><%= @chatroom.name %></h1>
+
+
+<% if @chatroom.participants[0].user_id == current_user.id %>
+  <p><%= image_tag(User.find(@chatroom.participants[1].user_id).avatar_thumbnail, :class => "avatar-Xlarge") %></p>
+ <strong> <%= User.find(@chatroom.participants[1].user_id).first_name %> <%= User.find(@chatroom.participants[1].user_id).last_name %></strong>
+<% else %>
+  <p><%= image_tag(User.find(@chatroom.participants[0].user_id).avatar_thumbnail, :class => "avatar-Xlarge") %></p>
+ <strong> <%= User.find(@chatroom.participants[0].user_id).first_name %> <%= User.find(@chatroom.participants[1].user_id).last_name %></strong>
+<% end %>
+
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
@@ -21,4 +32,5 @@
   %>
   <%= f.submit "Send", class: "btn btn-primary" %>
   <% end %>
+ <button type="button" class="btn btn-primary"><%=link_to "Back", pages_search_path%>
 </div>
