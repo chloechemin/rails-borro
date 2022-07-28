@@ -1,6 +1,10 @@
 <div class="main-container borro">
   <h2>Welcome,</h2>
   <h1 class="d-flex justify-content-center"><%= @user.username %></h1>
+
+<br />
+    <%= image_tag(current_user.avatar_thumbnail, :class => "avatar-Xlarge") %>
+
     <div class="white-card">
       <ul style="list-style-type:none;">
         <li><button type="button" class="btn btn-success mt-2"><%= link_to "Personal Infomation", edit_user_registration_path(@user)%></button></li>

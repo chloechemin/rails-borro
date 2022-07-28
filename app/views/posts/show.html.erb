@@ -49,25 +49,41 @@
     </div>
   </div>
 
-  <div class="white-card">
-    <p><strong><%= @post.user.username %></strong></p>
-    <p> 4.78 out of 5</p>
+  <div class="white-card center-content">
+    <p><strong><%= @post.user.username %></strong>
+    <%= image_tag(@post.user.avatar_thumbnail, :class => "avatar-Xlarge") %>
+    <p><%= image_tag('star.png',  :style=>"width: 20px") %>  4.78 out of 5</p>
+  </div>
+
+  <div class="white-card center-content">
+  <%# review %>
+    <% i = 0  %>
     <% @bookings.each do |booking| %>
-      <div class="gray-card">
-      <%# COMMENT - include reviews %>
-        <p><%=booking.user.username - booking.review.comment unless booking.review == nil %></p>
-      </div>
+      <% if booking.review %>
+        <div class="gray-card">
+          <%=booking.review.rating%> STAR - <%= booking.user.username  %> <i>"<%= booking.review.comment %>"</i>
+        </div>
+        <% i = i + 1  %>
+      <% end %>
+    <% end %>
+
+    <% if i == 0 %>
+    <p> No review yet! </p>
     <% end %>
   </div>
 
+
+
   <% if current_user.id == @post.user_id %>
     <button type="button" class="btn btn-primary m-1"><%= link_to "EDIT", edit_post_path(@post) %></button>
-    <button type="button" class="btn btn-primary m-1"><%=link_to "DELETE",
+    <button type="button" class="btn btn-success m-1"><%=link_to "DELETE",
                         post_path(@post),
                         method: :delete,
                         data: { confirm: "Are you sure?" } %>
     </button>
+      <button type="button" class="btn btn-primary m-1"><%= link_to "Back", :back %></div>
   <% else  %>
    <button type="button" class="btn btn-primary m-1"><%= link_to "CHECK AVAILABILITIES", new_post_booking_path(@post) %></button>
+    <button type="button" class="btn btn-primary m-1"><%= link_to "Back", :back %></div>
    <% end  %>
 </div>

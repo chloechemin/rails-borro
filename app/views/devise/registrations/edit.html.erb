@@ -4,6 +4,14 @@
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
+  <div class="avatar">
+       <%= image_tag(current_user.avatar_thumbnail, :class => "avatar-large") %>
+  </div>
+
+  <div class="avatar">
+    <%= f.file_field :avatar %>
+  </div>
+
     <div class="form-inputs">
       <%= f.input :email, required: true, autofocus: true %>
 
@@ -29,14 +37,16 @@
                   input_html: { autocomplete: "current-password" } %>
     </div>
 
-    <div class="form-actions">
+    <p><div class="form-actions btn btn-primary">
       <%= f.button :submit, "Update"%>
+
     </div>
+          </p>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  <h2>Cancel my account</h2>
 
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p>Unhappy? <div class="btn btn-success"><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></div></p>
 
-  <%= link_to "Back", :back %>
+  <button type="button" class="btn btn-primary m-1"><%= link_to "Back", :back %></div>
 </div>
