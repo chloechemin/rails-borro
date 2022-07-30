@@ -27,14 +27,21 @@
           </div>
           <p><small> <i class="fas fa-star"></i> <%= rand(3.8..5.0).round(1) %> out of 5 </small></p>
         </div>
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/chloechemin", class: "avatar-large", alt: "avatar-large" %>
+        <%= image_tag (@help_request.user.avatar_thumbnail), class: "avatar-large", alt: "avatar-large" %>
+        <%# image_tag "https://kitt.lewagon.com/placeholder/users/chloechemin", class: "avatar-large", alt: "avatar-large" %>
       </div>
     </div>
 
-  <button type="button" class="btn btn-success"><%= link_to "I WANT TO HELP", new_help_request_help_path(@help_request) %></button>
-  <button type="button" class="btn btn-success"><%= link_to "EDIT", edit_help_request_path(@help_request) %></button>
-  <button type="button" class="btn btn-danger"><%=link_to "DELETE",
+ <% if current_user.id == @help_request.user_id %>
+  <button type="button" class="btn btn-primary"><%= link_to "EDIT", edit_help_request_path(@help_request) %></button>
+  <button type="button" class="btn btn-success"><%=link_to "DELETE",
+
                       help_request_path(@help_request),
                       method: :delete,
-                      data: { confirm: "Are you sure?" } %></button>
+                      data: { confirm: "Are you sure?" } %>  </button>
+      <button type="button" class="btn btn-primary m-1"><%= link_to "Back", :back %></div>
+  <% else  %>
+  <button type="button" class="btn btn-success"><%= link_to "I WANT TO HELP", new_help_request_help_path(@help_request) %></button>
+   <button type="button" class="btn btn-primary m-1"><%= link_to "Back", :back %></div>
+<% end %>
 </div>

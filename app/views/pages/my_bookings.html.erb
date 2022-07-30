@@ -1,6 +1,8 @@
 <div class="main-container borro">
+<p>
 <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
-  <h1> MY BOOKINGS </h1>
+</p>
+  <h2> <strong> MY BOOKINGS </strong></h2>
     <% @bookings.each do |booking| %>
   <div class="white-card">
       <strong><%= booking.post.title.capitalize() %></strong>
