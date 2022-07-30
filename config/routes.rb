@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/pages/my_profile', to: 'pages#my_profile', as: :my_profile
   get '/pages/search', to: 'pages#search'
   get '/pages/post_confirmation', to: 'pages#post_confirmation', as: :post_confirmation
+  # get '/chatrooms', to: 'chatrooms#index'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

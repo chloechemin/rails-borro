@@ -2,7 +2,17 @@
   <h2> <strong>How was your experience?</strong></h2>
   <br>
     <%= simple_form_for [@post, @booking, @review] do |f| %>
-      <%= f.input :rating, as: :range, input_html: { min: 1, max:5 }, required: true%>
+      <div class="character-container" >
+        <div id="character-image">
+        </div>
+      </div>
+      <div>
+        <%= f.input :rating, as: :range, input_html: { min: 1, max:5, data: {
+          action: "reviews#renderRatingImage",
+          reviews_target: "review",
+          controller: "reviews",
+        } }, required: true%>
+      </div>
       <%= f.input :comment, placeholder: "Add your review here..." %>
       <%= f.submit name: "Send", class: "btn btn-primary" %>
     <% end %>
