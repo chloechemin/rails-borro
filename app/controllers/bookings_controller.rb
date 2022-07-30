@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.status = "Not confirmed"
     if @booking.save
-      @chatroom = Chatroom.new({ name: "#{@post.title} - #{current_user.username}" })
+      @chatroom = Chatroom.new({ name: "#{@post.title} - #{@post.user.username}" })
       @chatroom.save
       @message = Message.new({ content: @booking.message })
       @message.chatroom = @chatroom

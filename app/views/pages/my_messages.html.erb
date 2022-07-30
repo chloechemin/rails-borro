@@ -1,0 +1,11 @@
+<div class="main-container borro">
+  <h2><strong> MY MESSAGES </strong></h2>
+  <div class="white-card">
+    <ul style="list-style-type:none;">
+      <% @chatroom_ids.each do |chatroom_id| %>
+        <% chatroom = Chatroom.find(chatroom_id) %>
+        <li><%= link_to chatroom.name, chatroom_path(chatroom) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
