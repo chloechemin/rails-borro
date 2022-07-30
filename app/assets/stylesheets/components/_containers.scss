@@ -4,10 +4,29 @@
   padding: 50px 30px 80px 30px;
 }
 
+
 .character-container {
-  margin: 50px 30px;
-  img {
-    height: 100%;
-    object-fit: cover;
-  }
+  overflow: hidden;
+  height: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.character-container img {
+  height: 100%;
+  width: 120px;
+  object-fit: contain;
+}
+
+#homepage-lender img {
+  width: 80px;
+  padding: 6px;
+}
+
+#homepage-borrower {
+  width: 200px;
+}
+
+#welcome h1 {
+  margin: 0px 20px 30px 20px;
 }
