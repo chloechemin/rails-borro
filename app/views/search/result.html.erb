@@ -3,9 +3,9 @@
   data-mapbox-markers-value="<%= @markers.to_json %>"
   data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-<div class="main-container borro">
+<div class="result-container borro">
 <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
-  <h3><strong><h3><strong><%= pluralize(@posts.count, "Result") %> </strong>near you</h3> </strong>near you</h3>
+  <h3><strong><%= pluralize(@posts.count, "result") %> </strong>near you</h3>
       <% @posts.each do |post| %>
     <div class="white-card">
       <%= link_to post.title.capitalize, post_path(post) %>
