@@ -1,5 +1,12 @@
 <div class="main-container borro">
-  <h1>MY NOTIFICATIONS</h1>
   <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
-  <%= render @notifications %>
+  <h1>MY NOTIFICATIONS</h1>
+    <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
+      <% @notifications.each do |notification| %>
+    <div class="white-card">
+        <%= notification.params[:message]%>
+        <button type="button" class="btn btn-success mt-1"><%= link_to "VIEW POST", post_path(notification.params[:booking][:post_id]) %></button>
+        <button type="button" class="btn btn-success mt-1"><%= link_to "MANAGE BOOKINGS", post_bookings_path(notification.params[:booking][:post_id]) %></button>
+      </div>
+      <% end  %>
 </div>
