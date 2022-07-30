@@ -4,10 +4,11 @@
   <div class="character-container">
     <%= image_tag("characters/post-show.png") %>
   </div>
-
-  <h2><strong><%=@post.title.capitalize %></strong></h2>
-  <p><%= @post.description.capitalize %></p>
-
+<div class="purple-card mt-0">
+    <h5><strong><%=@post.title.capitalize %></strong></h5>
+<br>
+    <p><%= @post.description.capitalize %></p>
+  </div>
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <% if @post.photos.attached? == true %>
@@ -86,6 +87,5 @@
       <button type="button" class="btn btn-primary m-1"><%= link_to "Back", :back %></div>
   <% else  %>
    <button type="button" class="btn btn-primary m-1"><%= link_to "CHECK AVAILABILITIES", new_post_booking_path(@post) %></button>
-    <button type="button" class="btn btn-primary m-1"><%= link_to "Back", :back %></div>
    <% end  %>
 </div>
