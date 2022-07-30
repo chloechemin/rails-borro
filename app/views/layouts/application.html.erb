@@ -10,10 +10,14 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <script src="https://kit.fontawesome.com/2525b3bfb7.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+  <% unless action_name == "landing" %>
+   <%= render 'shared/navbar' %>
+  <% end %>
+
     <%= render 'shared/flashes' %>
 
     <%= yield %>
