@@ -8,7 +8,9 @@ class PagesController < ApplicationController
   def my_messages
     @user = current_user
     @messages = Message.where(user_id: current_user.id)
+    @help_requests = HelpRequest.where(user_id: current_user.id)
     @chatroom_ids = @messages.pluck(:chatroom_id).uniq
+
   end
 
   def my_bookings
