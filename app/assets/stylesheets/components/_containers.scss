@@ -4,6 +4,12 @@
   padding: 50px 30px 80px 30px;
 }
 
+.result-container {
+  // width: 375px;
+  height: auto;
+  padding: 40px 30px 80px 30px;
+  border-radius: 20px;
+}
 
 .character-container {
   overflow: hidden;
@@ -29,4 +35,9 @@
 
 #welcome h1 {
   margin: 0px 20px 30px 20px;
+}
+
+.result-container h3{
+  text-align: center;
+  margin-bottom: 20px;
 }
