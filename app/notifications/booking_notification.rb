@@ -1,13 +1,12 @@
 # To deliver this notification:
 #
-# CommentNotification.with(post: @post).deliver_later(current_user)
-# CommentNotification.with(post: @post).deliver(current_user)
+# BookingNotification.with(post: @post).deliver_later(current_user)
+# BookingNotification.with(post: @post).deliver(current_user)
 
 class BookingNotification < Noticed::Base
   # Add your delivery methods
   #
-  deliver_by :database
-  # deliver_by :action_cable
+  # deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
@@ -21,7 +20,7 @@ class BookingNotification < Noticed::Base
   # def message
   #   t(".message")
   # end
-
+  #
   # def url
   #   post_path(params[:post])
   # end
