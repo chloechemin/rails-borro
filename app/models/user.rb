@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :notifications, as: :recipient, dependent: :destroy
   has_many :posts
   has_many :bookings
   has_many :messages
@@ -11,7 +12,6 @@ class User < ApplicationRecord
   has_many :chatrooms, through: :participants
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i[create update]
-  has_many :notifications, as: :recipient
 
   def avatar_thumbnail
     if avatar.attached?
