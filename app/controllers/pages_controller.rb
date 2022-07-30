@@ -5,11 +5,17 @@ class PagesController < ApplicationController
     redirect_to(new_user_session_path) unless current_user
   end
 
+  def my_messages
+    @user = current_user
+    @messages = Message.where(user_id: current_user.id)
+    @chatroom_ids = @messages.pluck(:chatroom_id).uniq
+  end
+
   def my_bookings
     @user = current_user
     @bookings = Booking.where(user_id: current_user.id)
     @bookings.each do |booking|
-    @post = Post.find(booking.post_id)
+      @post = Post.find(booking.post_id)
     end
   end
 
