@@ -33,4 +33,5 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: :destroy
   resources :reviews, only: :destroy
+  resources :notifications, only: :index
 end
