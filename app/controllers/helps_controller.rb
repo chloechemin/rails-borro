@@ -10,7 +10,17 @@ class HelpsController < ApplicationController
     @help.help_request = @help_request
     @help.user = current_user
     if @help.save
-      redirect_to root_path
+      @chatroom = Chatroom.new({ name: "#{@help.user.username}" })
+      @chatroom.save
+      @message = Message.new({ content: @help.message })
+      @message.chatroom = @chatroom
+      @message.user = current_user
+      @message.save
+      @participant_user = Participant.new({ chatroom_id: @chatroom.id, user_id: current_user.id })
+      @participant_user.save
+      @participant_helper_user = Participant.new({ chatroom_id: @chatroom.id, user_id: @help.user.id })
+      @participant_helper_user.save
+      redirect_to help_requests_path(@help_requests, @help)
     else
       render :new
     end

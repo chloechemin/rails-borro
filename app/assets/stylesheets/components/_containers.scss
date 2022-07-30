@@ -4,10 +4,62 @@
   padding: 50px 30px 80px 30px;
 }
 
+.result-container {
+  // width: 375px;
+  height: auto;
+  padding: 40px 30px 80px 30px;
+  border-radius: 20px;
+}
+
+.character-card {
+  overflow: hidden;
+  height: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.character-card img {
+  height: 100%;
+  width: 120px;
+  object-fit: contain;
+}
+
 .character-container {
-  margin: 50px 30px;
-  img {
-    height: 100%;
-    object-fit: cover;
-  }
+  overflow: hidden;
+  height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.character-container img {
+  height: 100%;
+  width: 300px;
+  object-fit: contain;
+}
+
+#homepage-lender img {
+  width: 80px;
+  padding: 6px;
+}
+
+#homepage-borrower {
+  width: 200px;
+}
+
+#welcome h1 {
+  margin: 0px 20px 30px 20px;
+}
+
+
+#borro-icon{
+  width: 200px;
+}
+
+#landing-icon{
+  width: 330px;
+  height: 330px;
+
+.result-container h3{
+  text-align: center;
+  margin-bottom: 20px;
 }

@@ -1,13 +1,20 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!
 
-  def home
+  def landing
     redirect_to(new_user_session_path) unless current_user
   end
 
+  def home
+
+  end
+
   def my_messages
-    @user = current_user
-    @messages = Message.where(user_id: current_user.id)
+    outgoing_messages = Message.where(user_id: current_user.id)
+    @help_requests = HelpRequest.where(user_id: current_user.id)
+    @helps = Help.where(help_request: @help_requests)
+    ingoing_messages = Message.where(user_id: @helps.pluck(:user_id))
+    @messages = outgoing_messages + ingoing_messages
     @chatroom_ids = @messages.pluck(:chatroom_id).uniq
   end
 

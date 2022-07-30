@@ -1,10 +1,10 @@
-<div class="main-container borro">
+<div class="main-container borro d-flex flex-column">
 <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
   <h2>Welcome,</h2>
-  <h1 class="d-flex justify-content-center"><%= @user.username %></h1>
+  <h1 class="d-flex"><%= @user.username %></h1>
 
 <br />
-    <%= image_tag(current_user.avatar_thumbnail, :class => "avatar-Xlarge") %>
+    <%= image_tag(current_user.avatar_thumbnail, :class => "avatar-Xlarge mx-auto") %>
 
     <div class="white-card">
       <ul style="list-style-type:none;">
