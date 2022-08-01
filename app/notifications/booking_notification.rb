@@ -22,6 +22,6 @@ class BookingNotification < Noticed::Base
   # end
   #
   # def url
-  #   post_path(params[:post])
+  # post_bookings_path(params[:booking][:post_id])
   # end
 end

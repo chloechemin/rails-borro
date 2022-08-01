@@ -1,12 +1,15 @@
 <div class="main-container borro">
   <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
   <h1>MY NOTIFICATIONS</h1>
-    <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
-      <% @notifications.each do |notification| %>
     <div class="white-card">
-        <%= notification.params[:message]%>
-        <button type="button" class="btn btn-success mt-1"><%= link_to "VIEW POST", post_path(notification.params[:booking][:post_id]) %></button>
-        <button type="button" class="btn btn-success mt-1"><%= link_to "MANAGE BOOKINGS", post_bookings_path(notification.params[:booking][:post_id]) %></button>
-      </div>
-      <% end  %>
+    </div>
+    <% @notifications.each do |notification| %>
+  <div class="notification">
+    <%= image_tag(User.find(notification.params[:booking][:user_id]).avatar_thumbnail, :class => "avatar-large") %>
+    <div class="notification-content">
+      <p><small><%= notification.params[:booking][:created_at].strftime("#{notification.params[:booking][:created_at].day.ordinalize} %B")%></small></p>
+      <p><%= link_to notification.params[:message], post_bookings_path(notification.params[:booking][:post_id])%></p>
+    </div>
+  </div>
+      <% end %>
 </div>
