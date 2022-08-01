@@ -6,7 +6,6 @@ class PagesController < ApplicationController
   end
 
   def home
-
   end
 
   def my_messages

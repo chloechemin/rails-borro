@@ -17,10 +17,17 @@
     </div>
 
     <div class="d-flex flex-column">
-      <a href="/pages/my_bookings">
-        <i class="fas fa-calendar"></i>
+      <a href="/notifications">
+        <i class="fas fa-bell"></i>
+        <span class="badge badge-pill badge-red">
+         <% if user_signed_in? %>
+            <%= current_user.notifications.unread.count > 9 ? "9+" : current_user.notifications.unread.count %>
+          <% else %>
+            <%= "0" %>
+          <% end %>
+        </span>
       </a>
-      <p>Bookings</p>
+        <p>Notifications</p>
     </div>
 
     <div class="d-flex flex-column">
