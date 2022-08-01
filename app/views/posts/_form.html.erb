@@ -5,25 +5,20 @@
     <%= image_tag("characters/postnew.png", height: 232, width: 326) %>
   </div>
   <h3><strong>They can borrow:</strong></h3>
-  <div class="toggle-card">
-      <form>
-        <input class="my-class" type="radio" value="service" name="category" id="category_service" checked>
-        <label for="category_service">your time</label>
 
-        <input class="my-class" type="radio" value="product" name="category" id="category_product">
-        <label for="category_product">your things</label>
-    </form>
-  </div>
-  <div class="white-card">
     <%= simple_form_for(@post) do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :location,
-            input_html: { data: { geocoder_target: "location" }, class: "d-none"},
-            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
-   <%= f.input :duration, placeholders: "3 days"  %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit button_name, class: "btn btn-primary" %>
+    <div class="toggle-card">
+      <%= f.input :category, as: :radio_buttons, collection: [['YOUR THINGS', 'product'], [' YOUR TIME ', 'service']], input_html: { class: 'form-toggle'  }, wrapper: :vertical_collection_inline, legend_tag: false, :checked => ["product", true] %>
+    </div>
+    <div class="white-card">
+      <%= f.input :title, label: "What do you lend?", placeholder: "Name it"%>
+      <%= f.input :description, label: false, placeholder: "Describe it"%>
+      <%= f.input :duration, label: "For how long can this be borrowed?", collection: [['For up to 2 hours', '0.25'], ['For up to 4 hours', '0.5'], ['For up to 8 hours', '1'], ['For up to 2 days', '2'], ['For up to 3 days', '3'], ['For up to 4 days', '4'], ['For up to 5 days', '5'], ['For up to 6 days', '6'], ['For up to 7 days', '7'], ['For up to 10 days', '10'], ['For up to 2 weeks', '14'], ['For up to 1 month', '30'], ['For up to 2 months', '60']]%>
+      <%= f.input :location, label: "Where would you like to meet?",
+              input_html: { data: { geocoder_target: "location" }, class: "d-none"},
+              wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.submit button_name, class: "btn btn-primary" %>
+    </div>
   <% end %>
-  </div>
 </div>
