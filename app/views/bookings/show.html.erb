@@ -4,22 +4,35 @@
     <%= image_tag("characters/booking-show.png") %>
   </div>
 <br>
-  <h2>Your booking request <strong>has been sent to <%= @booking.post.user.username %>.</strong></h2>
-<br>
-  <div class="white-card">
-    <h3> <strong>Your booking details:</strong></h3>
-    <br>
-    <p><strong><%=@booking.post.title.upcase %></strong></p>
-    <p>at <%= @booking.post.location %></p>
-    <p>from <%= @booking.start_time.to_time.strftime('%B %e at %l:%M %p')%></p>
-    <p>to <%= @booking.end_time.to_time.strftime('%B %e at %l:%M %p')%></p>
-    <p><%= @booking.status %> by <%=@booking.post.user.username %></p>
-  </div>
 
-  <button type="button" class="btn btn-primary"><%= link_to "EDIT", edit_post_booking_path(@booking) %></button>
-  <button type="button" class="btn btn-primary"><%=link_to "CANCEL",
-                          post_booking_path(@booking),
-                          method: :delete,
-                          data: { confirm: "Are you sure?" } %></button>
-  <button type="button" class="btn btn-primary"><%= link_to "SEE MY BOOKINGS", my_bookings_path() %></button>
+<div class="center">
+<h1>Yeah!</h1>
+<h2><strong>Your request has been sent </strong>to <%=@booking.post.user.username %>.</h2>
+<p>Now, let's wait for it to get approved.</p>
+
+<br>
+  <div class="purple-card pb-2">
+    <h3> <strong>Your booking details:</strong></h3>
+    <div class="white-card mt-3 pt-10 pb-1">
+      <h3><strong><%=@booking.post.title.upcase %></strong></h3>
+      <ul>
+      <li><strong>at </strong><%= @booking.post.location %></li>
+      <li><strong>from </strong><%= @booking.start_time.to_time.strftime('%B %e at %l:%M %p')%></li>
+      <li><strong>to</strong> <%= @booking.end_time.to_time.strftime('%B %e at %l:%M %p')%></li>
+      <li><strong><%= @booking.status %> by <%=@booking.post.user.username %></li>
+      </ul>
+
+    </div>
+  </div>
+<br>
+<div class="center">
+      <button type="button" class="btn btn-primary"><%= link_to "EDIT", edit_post_booking_path(@booking) %></button>
+      <button type="button" class="btn btn-primary"><%=link_to "CANCEL",
+                            post_booking_path(@booking),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" } %></button>
+      </div>
+  <div class="center mt-2">
+    <button type="button" class="btn btn-primary"><%= link_to "SEE MY BOOKINGS", my_bookings_path() %></button>
+  </div>
 </div>
