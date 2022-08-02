@@ -1,46 +1,51 @@
-<%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
-<div class="main-container borro d-flex flex-column"
-  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+<div class="d-flex flex-column">
+  <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
+  <div class="main-container borro d-flex flex-column"
+    data-controller="chatroom-subscription"
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
 
-  <% user_0 = User.find(@chatroom.participants[0].user_id) %>
-  <% user_1 = User.find(@chatroom.participants[1].user_id) %>
+    <% user_0 = User.find(@chatroom.participants[0].user_id) %>
+    <% user_1 = User.find(@chatroom.participants[1].user_id) %>
 
 
-    <% if @chatroom.participants[0].user_id == current_user.id %>
-      <div class="mx-auto" style="padding-bottom: 10px;">
-      <%= image_tag(user_1.avatar_thumbnail, :class => "avatar-Xlarge") %>
+      <% if @chatroom.participants[0].user_id == current_user.id %>
+        <div class="mx-auto" style="padding-bottom: 10px;">
+        <%= image_tag(user_1.avatar_thumbnail, :class => "avatar-Xlarge") %>
+          </div>
+        <div class="mx-auto" style="padding-bottom: 20px;">
+          <h2><strong> <%= user_1.first_name %> <%= user_1.last_name %></strong></h2>
         </div>
-      <div class="mx-auto" style="padding-bottom: 20px;">
-        <h2><strong> <%= user_1.first_name %> <%= user_1.last_name %></strong></h2>
-      </div>
-    <% else %>
-      <div class="mx-auto" style="padding-bottom: 10px;">
-        <%= image_tag(user_0.avatar_thumbnail, :class => "avatar-Xlarge") %>
-      </div>
-      <div class="mx-auto" style="padding-bottom: 20px;">
-        <h2><strong><%= user_0.first_name %> <%= user_0.last_name %></strong></h2>
-      </div>
-    <% end %>
+      <% else %>
+        <div class="mx-auto" style="padding-bottom: 10px;">
+          <%= image_tag(user_0.avatar_thumbnail, :class => "avatar-Xlarge") %>
+        </div>
+        <div class="mx-auto" style="padding-bottom: 20px;">
+          <h2><strong><%= user_0.first_name %> <%= user_0.last_name %></strong></h2>
+        </div>
+      <% end %>
 
 
-  <div class="messages" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
-    <% end %>
+    <div class="messages" data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
   </div>
 
-  <%= simple_form_for [@chatroom, @message],
-    remote: true,
-    html: {data: {action: "ajax:success->chatroom-subscription#resetForm"},
-    class: "d-flex"} do |f|
-    %>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Message ##{@chatroom.name}",
-    wrapper_html: {class: "flex-grow-1"}
-  %>
-  <p><%= f.submit "Send", class: "btn btn-primary" %></p>
-  <% end %>
-
+  <div>
+    <div class="new-message">
+        <%= simple_form_for [@chatroom, @message],
+          remote: true,
+          html: {data: {action: "ajax:success->chatroom-subscription#resetForm"},
+          class: "d-flex"} do |f|
+          %>
+          <%= f.input :content,
+            label: false,
+            placeholder: "Message ##{@chatroom.name}",
+            wrapper_html: {class: "flex-grow-1"}
+          %>
+        <p><%= f.submit "Send", class: "btn btn-primary" %></p>
+        <% end %>
+    </div>
+  </div>
 </div>
