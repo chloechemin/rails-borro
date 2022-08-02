@@ -7,10 +7,23 @@
   <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
   <h3><strong><%=@posts.length%> results </strong>near you</h3>
   <% @posts.each do |post| %>
-  <div class="white-card">
+
+  <div class="card-product">
+   <% if @post.photos.attached? == true %>
+        <div class="carousel-item active">
+          <%= cl_image_tag @post.photos.first.key, crop: :thumb, class:"d-block w-100"%>
+        </div>
+        <% else %>
+
+      <div>
+      </div>
+
+      <% end %>
+  <div class="card-product-infos">
     <%= link_to post.title.capitalize, post_path(post) %>
     <p>Location: <%= post.location %></p>
     <p>For up to <%= post.duration %> days</p>
   </div>
   <% end %>
+
 </div>
