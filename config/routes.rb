@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: :destroy
   resources :reviews, only: :destroy
+  resources :notifications, only: :index
+  resources :notifications do
+    post :read_all, on: :collection
+  end
 end

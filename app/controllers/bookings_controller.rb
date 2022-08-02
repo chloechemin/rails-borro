@@ -2,9 +2,6 @@ class BookingsController < ApplicationController
   def index
     @post = Post.find(params[:post_id])
     @bookings = Booking.where(post_id: @post.id)
-    @bookings.each do |booking|
-      @user = User.find(booking.user_id)
-    end
   end
 
   def new
@@ -35,6 +32,7 @@ class BookingsController < ApplicationController
       @participant_post_user = Participant.new({ chatroom_id: @chatroom.id, user_id: @post.user.id })
       @participant_post_user.save
       redirect_to post_booking_path(@post, @booking)
+      PostNotification.with(booking: @booking, message: "#{current_user.username} has made a booking on your post").deliver(@post.user)
     else
       render :new
     end
@@ -50,20 +48,25 @@ class BookingsController < ApplicationController
     @post = @booking.post
     @booking.update(booking_params)
     redirect_to post_booking_path(@booking)
+    PostNotification.with(booking: @booking, message: "#{current_user.username} has edited their booking on your post").deliver(@post.user)
   end
 
   def accept
     @booking = Booking.find(params[:id])
+    @post = @booking.post
     @booking.status = "Confirmed"
     @booking.save
     redirect_to post_bookings_path(@booking.post)
+    BookingNotification.with(post: @post, message: "#{current_user.username} has accepted your booking!").deliver(@booking.user)
   end
 
   def decline
     @booking = Booking.find(params[:id])
+    @post = @booking.post
     @booking.status = "Not confirmed"
     @booking.save
     redirect_to post_bookings_path(@booking.post)
+    BookingNotification.with(post: @post, message: "#{current_user.username} has rejected your booking!").deliver(@booking.user)
   end
 
   def destroy

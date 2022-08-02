@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :notifications, as: :recipient, dependent: :destroy
   has_many :posts
   has_many :bookings
   has_many :messages
@@ -15,15 +16,16 @@ class User < ApplicationRecord
   def avatar_thumbnail
     if avatar.attached?
       avatar.variant(resize: "150x150!").processed
-   else
-    "/default_profile.jpeg"
-   end
+    else
+      "/default_profile.jpeg"
+    end
   end
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
   private
+
   def add_default_avatar
     unless avatar.attached?
       avatar.attach(
