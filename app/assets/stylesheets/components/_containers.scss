@@ -5,10 +5,18 @@
 
 }
 
+<<<<<<< HEAD
 .new-message {
   bottom: 55px;
   position: absolute;
   width: 88%;
+=======
+.result-container {
+  // width: 375px;
+  height: auto;
+  padding: 40px 30px 80px 30px;
+  border-radius: 20px;
+>>>>>>> master
 }
 
 .character-card {
@@ -48,4 +56,18 @@
 
 #welcome h1 {
   margin: 0px 20px 30px 20px;
+}
+
+
+#borro-icon{
+  width: 200px;
+}
+
+#landing-icon{
+  width: 330px;
+  height: 330px;
+}
+.result-container h3{
+  text-align: center;
+  margin-bottom: 20px;
 }

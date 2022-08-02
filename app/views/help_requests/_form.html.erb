@@ -1,20 +1,22 @@
 <div class="main-container borro">
-<%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
+  <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
   <div class="character-container">
     <%= image_tag("characters/helprequest-new.png") %>
   </div>
-    <div class="category-white-card">
-    <%= simple_form_for(@help_request) do |f| %>
-      <%= f.input :category, as: :radio_buttons, collection: [['YOUR THINGS', 'product'], ['YOUR TIME', 'service']], input_html: { class: 'my-class' }, wrapper: :vertical_collection_inline, legend_tag: false %>
-  </div>
-  <div class="white-card">
-    <%= f.input :title %>
-    <%=f.input :description, hint: "Introduce yourself and explain why you need help." %>
-    <%= f.input :location,
-            input_html: { data: { geocoder_target: "location" }, class: "d-none"},
-            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
-    <%= f.input :duration %>
-    <%= f.submit button_name, class: "btn btn-primary" %>
+
+  <h3><strong>You need to borrow:</strong></h3>
+  <%= simple_form_for(@help_request) do |f| %>
+    <div class="toggle-card">
+      <%= f.input :category, as: :radio_buttons, collection: [["SOMETHING", 'product'], ["SOME TIME", 'service']], input_html: { class: 'form-toggle'  }, wrapper: :vertical_collection_inline, legend_tag: false, :checked => ["product", true] %>
+    </div>
+    <div class="white-card">
+      <%= f.input :title, label: "What do you need?", placeholder: "Name it" %>
+      <%=f.input :description, label: false, placeholder: "Explain it", hint: "Introduce yourself and explain why you need help." %>
+      <%= f.input :duration, label: "For how long do you need to borrow it?", collection: [['For up to 2 hours', '0.25'], ['For up to 4 hours', '0.5'], ['For up to 8 hours', '1'], ['For up to 2 days', '2'], ['For up to 3 days', '3'], ['For up to 4 days', '4'], ['For up to 5 days', '5'], ['For up to 6 days', '6'], ['For up to 7 days', '7'], ['For up to 10 days', '10'], ['For up to 2 weeks', '14'], ['For up to 1 month', '30'], ['For up to 2 months', '60']]%>
+      <%= f.input :location, label: "Where would you like to meet?",
+              input_html: { data: { geocoder_target: "location" }, class: "d-none"},
+              wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+      <%= f.submit button_name, class: "btn btn-primary" %>
+    </div>
   <% end %>
-  </div>
 </div>

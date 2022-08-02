@@ -53,3 +53,39 @@
   width: 100%;
   padding: 10px;
 }
+
+.radio_buttons {
+  margin: 8px 0px !important;
+}
+
+.form-toggle{
+  position:absolute;
+  transform: scale(0);
+}
+
+.form-toggle + label {
+  // cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 14px;
+  padding: 8px 20px;
+  // background-color: $yellow;
+  color: $dark-purple;
+  // border: 1px solid $yellow;
+  // margin-right: 0.6rem;
+  // margin: 10px 10px;
+}
+
+.form-toggle:checked + label {
+  // .btn
+  background-color: $yellow;
+  color: $dark-purple;
+  border: 1px solid $yellow;
+  font-weight: bold;
+  // padding: 10px 18px;
+}
+
+.toggle-card .form-check {
+padding: 0px 10px !important;
+margin: 0px !important;
+}
