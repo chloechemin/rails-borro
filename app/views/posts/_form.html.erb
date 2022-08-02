@@ -7,8 +7,8 @@
   <h3><strong>They can borrow:</strong></h3>
 
     <%= simple_form_for(@post) do |f| %>
-    <div class="toggle-card">
-      <%= f.input :category, as: :radio_buttons, collection: [['YOUR THINGS', 'product'], [' YOUR TIME ', 'service']], input_html: { class: 'form-toggle'  }, wrapper: :vertical_collection_inline, legend_tag: false, :checked => ["product", true] %>
+    <div class="toggle-card ">
+      <%= f.input :category, as: :radio_buttons, collection: [['YOUR THINGS', 'product'], [' YOUR TIME ', 'service']], input_html: { class: 'lender-toggle'  }, wrapper: :vertical_collection_inline, legend_tag: false, :checked => ["product", true] %>
     </div>
     <div class="white-card">
       <%= f.input :title, label: "What do you lend?", placeholder: "Name it"%>
@@ -18,7 +18,9 @@
               input_html: { data: { geocoder_target: "location" }, class: "d-none"},
               wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.submit button_name, class: "btn btn-primary" %>
+      <%= f.submit button_name, class: "btn btn-success ok-button" %>
+      <br>
+      <br>
     </div>
   <% end %>
 </div>
