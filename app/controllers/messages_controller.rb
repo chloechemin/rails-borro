@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
         render_to_string(partial: "message", locals: { message: @message })
       )
       head :ok
-      MessageNotification.with(booking: @message, message: "#{current_user.username} has sent you a message").deliver(User.find[@participant[:user_id]])
+      MessageNotification.with(booking: @message, message: "#{current_user.username} has sent you a message").deliver(User.find(@participant[1].user_id))
     else
       render "chatrooms/show", status: :unprocessable_entity
     end
