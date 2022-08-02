@@ -2,9 +2,6 @@ class BookingsController < ApplicationController
   def index
     @post = Post.find(params[:post_id])
     @bookings = Booking.where(post_id: @post.id)
-    @bookings.each do |booking|
-      @user = User.find(booking.user_id)
-    end
   end
 
   def new

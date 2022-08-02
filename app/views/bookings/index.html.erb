@@ -1,14 +1,16 @@
 <div class="main-container borro">
+  <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
   <h2><strong> MANAGE BOOKINGS </strong></h2>
   <h3>You have <strong><%=@bookings.length%></strong> <%= @bookings.length == 1 ? "booking" : "bookings" %> for <i>'<%= @post.title.capitalize %></i>'</h3>
-<div class="white-card">
-  <% @bookings.each do |booking| %>
-<ul style="list-style-type:none;">
-  <li><%= @user.username %></li>
-  <li><i>"<%= booking.message %>"</i></li>
-  <li>Status: <%= booking.status %></li>
-</ul>
-  <%= link_to "Accept", accept_booking_path(booking), class: "btn btn-primary", method: "patch" %>
-  <%= link_to "Decline", decline_booking_path(booking), class: "btn btn-outline-primary", method: "patch" %>
-  <% end %>
-</div>
+<% @bookings.each do |booking| %>
+  <div class="white-card">
+    <ul style="list-style-type:none;">
+      <% user = User.find(booking.user_id)%>
+      <li><%= user.username %></li>
+      <li><i>"<%= booking.message %>"</i></li>
+      <li>Status: <%= booking.status %></li>
+    </ul>
+    <%= link_to "Accept", accept_booking_path(booking), class: "btn btn-primary", method: "patch" %>
+    <%= link_to "Decline", decline_booking_path(booking), class: "btn btn-outline-primary", method: "patch" %>
+  </div>
+<% end %>
