@@ -32,7 +32,6 @@
     </div>
   </div>
 
-  <div>
     <div class="new-message">
         <%= simple_form_for [@chatroom, @message],
           remote: true,
@@ -47,5 +46,4 @@
         <p><%= f.submit "Send", class: "btn btn-primary" %></p>
         <% end %>
     </div>
-  </div>
 </div>
