@@ -53,6 +53,18 @@ $border-radius-sm: 20px;
   line-height: 1;
 }
 
+.borro a {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  color: $purple;
+  text-decoration: none;
+}
+
 .remove-margin p {
   margin-bottom: 2px;
+}
+
+.center {
+  text-align: center;
 }
