@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
+    @participant = Participant.where(chatroom_id: @chatroom.id)
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
@@ -11,6 +12,7 @@ class MessagesController < ApplicationController
         render_to_string(partial: "message", locals: { message: @message })
       )
       head :ok
+      MessageNotification.with(booking: @message, message: "#{current_user.username} has sent you a message").deliver(User.find[@participant[:user_id]])
     else
       render "chatrooms/show", status: :unprocessable_entity
     end

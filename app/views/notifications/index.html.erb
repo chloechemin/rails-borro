@@ -2,13 +2,22 @@
   <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
   <h2>MY NOTIFICATIONS</h2>
     <div class="white-card">
+
     </div>
     <% @notifications.each do |notification| %>
-  <div class="notification">
-    <%= image_tag(User.find(notification.params[:booking][:user_id]).avatar_thumbnail, :class => "avatar-large") %>
-    <div class="notification-content">
-      <p><small><%= notification.params[:booking][:created_at].strftime("#{notification.params[:booking][:created_at].day.ordinalize} %B")%></small></p>
-      <p><%= link_to notification.params[:message], post_bookings_path(notification.params[:booking][:post_id])%></p>
+      <% if notification.type == "PostNotification" %>
+        <div class="notification">
+          <%= image_tag(User.find(notification.params[:booking][:user_id]).avatar_thumbnail, :class => "avatar-large") %>
+          <div class="notification-content">
+            <p><small><%= notification.params[:booking][:created_at].strftime("#{notification.params[:booking][:created_at].day.ordinalize} %B")%></small></p>
+              <p><%= link_to notification.params[:message], post_bookings_path(notification.params[:booking][:post_id])%></p>
+        <% else %>
+          <div class="notification">
+            <%= image_tag(User.find(notification.params[:post][:user_id]).avatar_thumbnail, :class => "avatar-large") %>
+              <div class="notification-content">
+                <p><small><%= notification.params[:post][:created_at].strftime("#{notification.params[:post][:created_at].day.ordinalize} %B")%></small></p>
+                  <p><%= link_to notification.params[:message], my_bookings_path %></p>
+        <% end %>
     </div>
   </div>
       <% end %>

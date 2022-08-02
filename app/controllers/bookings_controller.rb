@@ -53,18 +53,20 @@ class BookingsController < ApplicationController
 
   def accept
     @booking = Booking.find(params[:id])
+    @post = @booking.post
     @booking.status = "Confirmed"
     @booking.save
     redirect_to post_bookings_path(@booking.post)
-    BookingNotification.with(booking: @booking, message: "#{current_user.username} has accepted your booking!").deliver(@booking.user)
+    BookingNotification.with(post: @post, message: "#{current_user.username} has accepted your booking!").deliver(@booking.user)
   end
 
   def decline
     @booking = Booking.find(params[:id])
+    @post = @booking.post
     @booking.status = "Not confirmed"
     @booking.save
     redirect_to post_bookings_path(@booking.post)
-    BookingNotification.with(booking: @booking, message: "#{current_user.username} has rejected your booking!").deliver(@booking.user)
+    BookingNotification.with(post: @post, message: "#{current_user.username} has rejected your booking!").deliver(@booking.user)
   end
 
   def destroy
