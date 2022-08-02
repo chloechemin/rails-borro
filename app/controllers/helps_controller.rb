@@ -16,11 +16,12 @@ class HelpsController < ApplicationController
       @message.chatroom = @chatroom
       @message.user = current_user
       @message.save
-      @participant_user = Participant.new({ chatroom_id: @chatroom.id, user_id: current_user.id })
+      @participant_user = Participant.new({ chatroom_id: @chatroom.id, user_id: help_request.user.id })
       @participant_user.save
       @participant_helper_user = Participant.new({ chatroom_id: @chatroom.id, user_id: @help.user.id })
       @participant_helper_user.save
       redirect_to help_requests_path(@help_requests, @help)
+      MessageNotification.with(booking: @message, message: "#{current_user.username} wants to help you!").deliver(@help_request.user)
     else
       render :new
     end

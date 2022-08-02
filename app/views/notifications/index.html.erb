@@ -4,6 +4,8 @@
   <br>
   <h5> <strong>MY NOTIFICATIONS</strong> </h5>
     <br>
+
+    <button type="button" class="btn btn-primary m-1"><%= link_to "Mark all as read", read_all_notifications_path, method: :post %></button>
     <% @notifications.each do |notification| %>
       <% if notification.type == "PostNotification" %>
         <div class="notification">
