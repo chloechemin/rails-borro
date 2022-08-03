@@ -3,22 +3,41 @@
   <div class="navbar-item d-flex justify-content-around">
 
     <div class="d-flex flex-column">
+    <% if current_page?("/pages/home") %>
       <a href="/pages/home">
+          <i class="fa-solid fa-house selected-button"></i>
+      </a>
+      <p class="selected-button">Home</p>
+      <% else %>
+            <a href="/pages/home">
           <i class="fa-solid fa-house"></i>
       </a>
       <p>Home</p>
+    <% end %>
+
     </div>
 
+<% if (current_page?("/pages/my_messages") || (full_url_for.include?("chatrooms")))%>
     <div class="d-flex flex-column">
+      <a href="/pages/my_messages">
+        <i class="fas fa-comment-alt selected-button"></i>
+      </a>
+      <p class="selected-button">Messages</p>
+    </div>
+<% else %>
+      <div class="d-flex flex-column">
       <a href="/pages/my_messages">
         <i class="fas fa-comment-alt"></i>
       </a>
       <p>Messages</p>
     </div>
+<% end %>
 
-    <div class="d-flex flex-column">
+
+<% if (current_page?("/notifications"))%>
+    <div class="d-flex flex-column ">
       <a href="/notifications">
-        <i class="fas fa-bell"></i>
+        <i class="fas fa-bell selected-button"></i>
         <span class="badge badge-pill badge-red">
          <% if user_signed_in? %>
             <%= current_user.notifications.unread.count > 9 ? "9+" : current_user.notifications.unread.count %>
@@ -27,15 +46,42 @@
           <% end %>
         </span>
       </a>
-        <p>Notifications</p>
+        <p class = "selected-button">Notifications</p>
     </div>
+<% else %>
+    <div class="d-flex flex-column ">
+      <a href="/notifications">
+        <i class="fas fa-bell "></i>
+        <span class="badge badge-pill badge-red">
+         <% if user_signed_in? %>
+            <%= current_user.notifications.unread.count > 9 ? "9+" : current_user.notifications.unread.count %>
+          <% else %>
+            <%= "0" %>
+          <% end %>
+        </span>
+      </a>
+        <p >Notifications</p>
+    </div>
+<% end %>
 
+
+
+<% if (current_page?("/pages/my_profile") )%>
+    <div class="d-flex flex-column ">
+      <a href="/pages/my_profile">
+        <i class="fas fa-user selected-button"></i>
+      </a>
+      <p class = "selected-button">Profile</p>
+    </div>
+<% else %>
     <div class="d-flex flex-column">
       <a href="/pages/my_profile">
         <i class="fas fa-user"></i>
       </a>
       <p>Profile</p>
     </div>
+
+<% end %>
 
   </div>
 </div>
