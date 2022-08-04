@@ -31,11 +31,11 @@ class User < ApplicationRecord
       avatar.attach(
         io: File.open(
           Rails.root.join(
-           'app', 'assets', 'images', 'default_profile.jpeg'
+           'app', 'assets', 'images', 'default_profile.png'
           )
         ),
-        filename: 'default_profile.jpeg',
-        content_type: 'image/jpeg'
+        filename: 'default_profile.png',
+        content_type: 'image/png'
       )
     end
   end
