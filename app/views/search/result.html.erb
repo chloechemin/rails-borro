@@ -5,13 +5,16 @@
 </div>
 <div class="result-container borro">
 <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
-  <h6><strong><%= pluralize(@posts.count, "result") %> </strong>near you</h6>
+  <h3><strong><%= pluralize(@posts.count, "result") %> </strong>near you</h3>
       <% @posts.each do |post| %>
     <div class="card-product">
-    <%= image_tag("distance.png") %>
-    <div class="km center">
-    <h5><%= rand(0.1..3.0).round(1) %></h5>
-    </div>
+
+      <% if post.photos.attached? == true %>
+        <%= cl_image_tag post.photos.first.key, crop: :thumb, class:"d-block"%>
+      <% else %>
+        <img src="https://source.unsplash.com/random/?<%= post.title %>" />
+      <% end %>
+
       <div class="card-product-infos">
         <h3><%= link_to post.title.upcase, post_path(post) %></h3>
         <p>For up to <%= post.duration %> days</p>
