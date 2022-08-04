@@ -1,6 +1,6 @@
-<div class="d-flex flex-column">
   <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
-  <div class="main-container borro d-flex flex-column"
+<div class="d-flex flex-column">
+  <div class="chatroom-main-container borro d-flex flex-column"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
 
@@ -23,8 +23,6 @@
           <h2><strong><%= user_0.first_name %> <%= user_0.last_name %></strong></h2>
         </div>
       <% end %>
-
-
     <div class="messages" data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", message: message %>
@@ -32,7 +30,8 @@
     </div>
   </div>
 
-    <div class="new-message">
+    <div class="new-message" data-controller="chatroom-subscription"
+                             data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
         <%= simple_form_for [@chatroom, @message],
           remote: true,
           html: {data: {action: "ajax:success->chatroom-subscription#resetForm"},
