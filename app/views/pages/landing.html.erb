@@ -1,18 +1,22 @@
-<div class="main-container borro d-flex flex-column" style="background-color: #5868FC; height: 100vh; width: 100%; padding-left: 20px;padding-right: 20px;">
+<div class="borro landing">
 
+  <div class="logo-container">
+      <%= image_tag("borro-logo.png", :style=> "width: 200px") %>
+  </div>
 
-<div class="character-container" id="borro-icon" style="padding-left: 30px;height: 120px; ">
-    <%= image_tag("borro icon.png", :style=> "width: 150px") %>
-</div>
+  <div class="landing-container">
+    <%= image_tag("landing icon.png") %>
+  </div>
 
-<h2 style="color: white; padding-left: 30px ">Count on <strong>your neighbours</strong></h2>
+  <div class="main-container borro center pt-0">
+    <h6 style="color: white">Count on <strong>your neighbours</strong></h6>
+      <br>
+    <button type="button" class="btn btn-success m-1">
+      <%= link_to "LET'S GO ->", pages_home_path() %>
+    </button>
+  </div>
 
-<div class="character-container" id="landing-icon">
-  <%= image_tag("landing icon.png", :style =>"width: 300px;height: 300px;margin: auto;") %>
+  <br>
 
-</div>
-
-<button type="button" class="btn btn-primary m-1">
-  <%= link_to "LET'S GO", pages_home_path() %>
-</button>
+  <br>
 </div>

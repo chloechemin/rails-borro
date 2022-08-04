@@ -1,17 +1,18 @@
-<div class="main-container borro">
+<div class="main-container borro center">
 <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
-  <div class="character-container">
+  <div class="character-container-noresult">
     <%= image_tag("characters/noresult-borrower.png") %>
   </div>
 
 <a href="/"><i class="fas fa-angle-left back-btn"></i></a>
 
-<h3><strong>Sorry...</strong></h3>
-<h3>you're out of luck</h3>
-<p>What you're looking for is not currently avaliable to borrow.</p>
-<div class="white-card" style="padding-left: 15px; padding-right: 15px;">
-<h3 style="padding-bottom: 10px">But you can ask your neighbours <strong class="yellow-word">to help you</strong></h3>
-
-<button type="button" class="btn btn-primary"><%= link_to "REQUEST HELP", new_help_request_path() %></button>
-</div>
+  <div class="gray-card">
+    <h5><strong>Sorry...</strong></h5>
+    <h3>you're out of luck</h3>
+    <p>What you're looking for is not currently avaliable to borrow.</p>
+  </div>
+  <div class="white-card">
+  <h3 style="padding-bottom: 10px">But you can ask your neighbours <strong class="yellow-word">to help you</strong></h3>
+  <button type="button" class="btn btn-primary"><%= link_to "REQUEST HELP", new_help_request_path() %></button>
+  </div>
 </div>
