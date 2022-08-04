@@ -10,7 +10,7 @@
     <p><%= @post.description.capitalize %></p>
   </div>
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+    <div class="carousel-inner" style="border-radius: 20px;">
       <% if @post.photos.attached? == true %>
         <div class="carousel-item active">
           <%= cl_image_tag @post.photos.first.key, crop: :thumb, class:"d-block w-100", style:"height: 300px;object-fit: cover;"%>
