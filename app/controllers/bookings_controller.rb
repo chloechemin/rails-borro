@@ -73,7 +73,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @post = @booking.post
     redirect_to post_bookings_path(@booking.post)
-    BookingNotification.with(post: @post, message: "#{current_user.username} has requested for you to leave a review!").deliver(@booking.user)
+    ReviewNotification.with(post: @post, booking: @booking, message: "#{current_user.username} has requested for you to leave a review!").deliver(@booking.user)
   end
 
   def destroy
