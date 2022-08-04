@@ -20,7 +20,8 @@
           </div>
           <p><small> <i class="fas fa-star"></i> <%= rand(3.8..5.0).round(1) %> out of 5 </small></p>
         </div>
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/chloechemin", class: "avatar-large", alt: "avatar-large" %>
+        <%= image_tag(User.find(@help_request.user.id).avatar_thumbnail, :class => "avatar-large") %>
+
       </div>
     </div>
     <div class="white-card">
@@ -32,17 +33,18 @@
               data-mapbox-markers-value="<%= @markers.to_json %>"
               data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
-    <br>
 
- <% if current_user.id == @help_request.user_id %>
   <div class="center">
+ <% if current_user.id == @help_request.user_id %>
+
     <button type="button" class="btn btn-success"><%= link_to "EDIT", edit_help_request_path(@help_request) %></button>
     <button type="button" class="btn btn-success"><%=link_to "DELETE",
                         help_request_path(@help_request),
                         method: :delete,
                         data: { confirm: "Are you sure?" } %></button>
-    </div>
+
   <% else  %>
     <button type="button" class="btn btn-success center"><%= link_to "I WANT TO HELP", new_help_request_help_path(@help_request) %></button>
   <% end  %>
+</div>
 </div>

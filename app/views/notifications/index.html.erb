@@ -2,13 +2,14 @@
   <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
   <br>
   <br>
-  <h5> <strong>MY NOTIFICATIONS</strong> </h5>
+  <h5 style="font-size: 37px"> <strong>MY NOTIFICATIONS</strong> </h5>
+    <br>
+    <button type="button" class="btn btn-primary m-1"><%= link_to "Mark all as read", read_all_notifications_path, method: :post %></button>
     <br>
 
-    <button type="button" class="btn btn-primary m-1"><%= link_to "Mark all as read", read_all_notifications_path, method: :post %></button>
     <% @notifications.each do |notification| %>
       <% if notification.type == "PostNotification" %>
-        <div class="notification">
+        <div class="notification" style="margin-top: 8px;">
           <%= image_tag(User.find(notification.params[:booking][:user_id]).avatar_thumbnail, :class => "avatar-large") %>
           <div class="notification-content">
             <p><small><%= notification.params[:booking][:created_at].strftime("#{notification.params[:booking][:created_at].day.ordinalize} %B")%></small></p>
@@ -16,7 +17,7 @@
             </div>
           </div>
         <% elsif notification.type == "MessageNotification" %>
-          <div class="notification">
+           <div class="notification" style="margin-top: 8px;">
             <%= image_tag(User.find(notification.params[:booking][:user_id]).avatar_thumbnail, :class => "avatar-large") %>
             <div class="notification-content">
               <p><small><%= notification.params[:booking][:created_at].strftime("#{notification.params[:booking][:created_at].day.ordinalize} %B")%></small></p>
@@ -24,7 +25,7 @@
             </div>
           </div>
         <% else %>
-          <div class="notification">
+          <div class="notification" style="margin-top: 8px;">
             <%= image_tag(User.find(notification.params[:post][:user_id]).avatar_thumbnail, :class => "avatar-large") %>
               <div class="notification-content">
                 <p><small><%= notification.params[:post][:created_at].strftime("#{notification.params[:post][:created_at].day.ordinalize} %B")%></small></p>

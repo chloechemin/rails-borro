@@ -16,7 +16,7 @@ class HelpsController < ApplicationController
       @message.chatroom = @chatroom
       @message.user = current_user
       @message.save
-      @participant_user = Participant.new({ chatroom_id: @chatroom.id, user_id: help_request.user.id })
+      @participant_user = Participant.new({ chatroom_id: @chatroom.id, user_id: @help_request.user.id })
       @participant_user.save
       @participant_helper_user = Participant.new({ chatroom_id: @chatroom.id, user_id: @help.user.id })
       @participant_helper_user.save

@@ -1,5 +1,8 @@
 <div class="main-container borro">
-  <h2><strong> MY MESSAGES </strong></h2>
+<%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
+  <br>
+  <br>
+  <h5> <strong>MY MESSAGES</strong> </h5>
   <div class="white-card">
     <ul style="list-style-type:none;">
       <% if @chatroom_ids.count == 0 %>
@@ -7,6 +10,7 @@
       <% else %>
         <% @chatroom_ids.each do |chatroom_id| %>
           <% chatroom = Chatroom.find(chatroom_id) %>
+
           <% if chatroom.participants[1].user_id == current_user.id %>
               <%= image_tag(User.find(chatroom.participants[0].user_id).avatar_thumbnail, :class => "avatar") %>
               <li><%= link_to chatroom.name, chatroom_path(chatroom) %></li>
@@ -14,8 +18,10 @@
               <%= image_tag(User.find(chatroom.participants[1].user_id).avatar_thumbnail, :class => "avatar") %>
               <li><%= link_to chatroom.name, chatroom_path(chatroom) %></li>
           <% end %>
+
         <% end %>
       <% end %>
     </ul>
   </div>
+
 </div>

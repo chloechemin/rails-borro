@@ -8,7 +8,13 @@
   <h3><strong><%= pluralize(@posts.count, "result") %> </strong>near you</h3>
       <% @posts.each do |post| %>
     <div class="card-product">
-      <img src="https://source.unsplash.com/random/?<%= post.title %>" />
+
+      <% if post.photos.attached? == true %>
+        <%= cl_image_tag post.photos.first.key, crop: :thumb, class:"d-block"%>
+      <% else %>
+        <img src="https://source.unsplash.com/random/?<%= post.title %>" />
+      <% end %>
+
       <div class="card-product-infos">
         <h3><%= link_to post.title.upcase, post_path(post) %></h3>
         <p>For up to <%= post.duration %> days</p>
