@@ -1,7 +1,20 @@
 .main-container {
   // width: 375px;
-  height: auto;
+  height: 500px;
   padding: 50px 30px 80px 30px;
+
+}
+
+.chatroom-main-container {
+  padding: 50px 30px 148.5px 30px;
+}
+
+.new-message {
+  bottom: 55px;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  padding-top: 5px;
 }
 
 .result-container {
