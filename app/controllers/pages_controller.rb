@@ -41,8 +41,8 @@ class PagesController < ApplicationController
   end
 
   def post_confirmation
-    @user = current_user
     @posts = Post.where(user_id: current_user.id)
+    @post = @posts.last
   end
 
 end

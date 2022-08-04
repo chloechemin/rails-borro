@@ -23,12 +23,20 @@
               <p><%= link_to notification.params[:message], chatroom_path(notification.params[:booking][:chatroom_id])%></p>
             </div>
           </div>
+        <% elsif notification.type == "ReviewNotification" %>
+        <div class="notification">
+            <%= image_tag(User.find(notification.params[:post][:user_id]).avatar_thumbnail, :class => "avatar-large") %>
+              <div class="notification-content">
+                <p><small><%= notification.params[:post][:created_at].strftime("#{notification.params[:post][:created_at].day.ordinalize} %B")%></small></p>
+                <p><%= link_to notification.params[:message],  new_post_booking_review_path(notification.params[:post],notification.params[:booking]) %></p>
+            </div>
+          </div>
         <% else %>
           <div class="notification">
             <%= image_tag(User.find(notification.params[:post][:user_id]).avatar_thumbnail, :class => "avatar-large") %>
               <div class="notification-content">
                 <p><small><%= notification.params[:post][:created_at].strftime("#{notification.params[:post][:created_at].day.ordinalize} %B")%></small></p>
-                  <p><%= link_to notification.params[:message], my_bookings_path %></p>
+                <p><%= link_to notification.params[:message], my_bookings_path %></p>
             </div>
           </div>
         <% end %>
