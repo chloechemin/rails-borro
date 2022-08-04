@@ -37,6 +37,20 @@
   object-fit: contain;
 }
 
+.character-container-noresult {
+  overflow: hidden;
+  height: 220px;
+  display: flex;
+  align-items: center;
+}
+
+.character-container-noresult img {
+  height: 100%;
+  width: 300px;
+  object-fit: contain;
+}
+
+
 #homepage-lender img {
   width: 80px;
   padding: 6px;
@@ -51,15 +65,32 @@
 }
 
 
-#borro-icon{
-  width: 200px;
+.logo-container {
+  overflow: hidden;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 80px 30px 40px 30px;
+  justify-content: center;
 }
 
-#landing-icon{
-  width: 330px;
-  height: 330px;
+.landing-container {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
-.result-container h3{
+
+.landing-container img {
+  height: 100%;
+  width: 375px;
+  object-fit: contain;
+}
+
+.result-container h6{
   text-align: center;
   margin-bottom: 20px;
+}
+
+.landing {
+  background-color: $purple;
 }
