@@ -79,7 +79,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to posts_path
+    redirect_to my_bookings_path
   end
 
   private
