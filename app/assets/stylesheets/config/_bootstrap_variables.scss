@@ -55,7 +55,7 @@ $border-radius-sm: 20px;
 
 .borro h6 {
   font-weight: 700;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1;
 }
 
@@ -65,6 +65,19 @@ $border-radius-sm: 20px;
   line-height: 1;
   color: $purple;
   text-decoration: none;
+}
+
+.chatroom {
+  p {
+    font-size: 14px;
+  }
+  a {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+  color: $dark-purple;
+  text-decoration: none;
+}
 }
 
 .remove-margin p {
