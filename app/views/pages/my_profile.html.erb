@@ -2,12 +2,14 @@
 <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
 <br>
 <br>
-  <h2>Welcome,</h2>
-  <h1 class="d-flex"><%= @user.username %></h1>
+<div class="center">
+  <h5>Welcome,</h5>
+  <h1><%= @user.username %></h1>
 
-<br />
     <%= image_tag(current_user.avatar_thumbnail, :class => "avatar-Xlarge mx-auto") %>
-
+    <br>
+    <br>
+</div>
     <div class="white-card">
       <ul style="list-style-type:none;">
         <li><button type="button" class="btn btn-success mt-2"><%= link_to "PERSONAL INFORMATION", edit_user_registration_path(@user)%></button></li>
