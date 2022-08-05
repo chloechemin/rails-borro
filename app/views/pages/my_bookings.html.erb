@@ -10,8 +10,8 @@
         <div class="gray-card mt-3 pt-10 pb-1">
           <h3><strong><%=booking.post.title.upcase %></strong></h3>
           <ul>
-          <li><strong>At -</strong><%= booking.post.location %></li>
-          <li><strong>From -</strong><%= booking.start_time.to_time.strftime('%B %e at %l:%M %p')%></li>
+          <li><strong>At -</strong> <%= booking.post.location %></li>
+          <li><strong>From -</strong> <%= booking.start_time.to_time.strftime('%B %e at %l:%M %p')%></li>
           <li><strong>To -</strong> <%= booking.end_time.to_time.strftime('%B %e at %l:%M %p')%></li>
           <br>
           <strong><%= booking.status %> by <%=booking.post.user.username %></strong>

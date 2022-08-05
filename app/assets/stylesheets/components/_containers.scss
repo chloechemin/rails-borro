@@ -18,9 +18,22 @@
 }
 
 .new-message {
+
+.btn:hover {
+  border-color: white;
+  color: white;
+}
+
+.search-button{
+right: 20px;
+bottom: 35px;
+}
+}
+
+.new-message {
   .form-control {
-    margin: 12px;
-    width: 75%;
+    margin: 12px 10px 12px 20px;
+    width: 80%;
   }
   .ok-button {
     right: 20px;
@@ -107,6 +120,7 @@
   height: 100%;
   width: 375px;
   object-fit: contain;
+  margin-right: 20px;
 }
 
 .result-container h6{

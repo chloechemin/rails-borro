@@ -43,7 +43,11 @@
             placeholder: "Message ##{@chatroom.name}",
             wrapper_html: {class: "flex-grow-1"}
           %>
-        <p><%= f.submit "GO", class: "btn btn-primary ok-button" %></p>
+          <%= f.button :button do %>
+          <div class="btn btn-primary search-button">
+            <i class="fas fa-paper-plane"></i>
+        </div>
         <% end %>
+      <% end %>
     </div>
 </div>
