@@ -17,6 +17,16 @@
   padding-top: 5px;
 }
 
+.new-message {
+  .form-control {
+    margin: 12px;
+    width: 75%;
+  }
+  .ok-button {
+    right: 20px;
+    bottom: 40px;
+  }
+}
 .result-container {
   // width: 375px;
   height: auto;
@@ -115,8 +125,7 @@
   border-radius: 20px;
   padding: 10px 16px;
   margin-bottom: 0px;
-  margin-left: 30px;
-  width: 280px;
+  width: 310px;
 }
 
 .description {
