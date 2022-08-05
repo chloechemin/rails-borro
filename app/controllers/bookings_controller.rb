@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
       @participant_post_user = Participant.new({ chatroom_id: @chatroom.id, user_id: @post.user.id })
       @participant_post_user.save
       redirect_to post_booking_path(@post, @booking)
-      PostNotification.with(booking: @booking, message: "#{current_user.username} has made a booking on your post").deliver(@post.user)
+      PostNotification.with(booking: @booking, message: "#{current_user.username.capitalize} has made a booking on your post").deliver(@post.user)
     else
       render :new
     end
@@ -73,7 +73,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @post = @booking.post
     redirect_to post_bookings_path(@booking.post)
-    ReviewNotification.with(post: @post, booking: @booking, message: "#{current_user.username} has requested for you to leave a review!").deliver(@booking.user)
+    ReviewNotification.with(post: @post, booking: @booking, message: "#{current_user.username.capitalize} has requested for you to leave a review!").deliver(@booking.user)
   end
 
   def destroy
