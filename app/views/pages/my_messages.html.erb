@@ -1,28 +1,47 @@
-<%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
-<div class="main-container borro">
-<%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
-  <br>
-  <br>
-  <h5> <strong>MY MESSAGES</strong> </h5>
-  <div class="white-card">
+<div class="main-container borro chatroom">
+  <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
+  <div class="character-container">
+    <%= image_tag("characters/chatrooms.png") %>
+  </div>
+<br>
+<br>
+<div class="center">
+  <form accept-charset="UTF-8" method="get">
+    <p> <input class="search-message " style="font-family: FontAwesome;" placeholder="&#xf002" type="text" name="description" id="description"></p>
+  </form>
+</div>
     <ul style="list-style-type:none;">
       <% if @chatroom_ids.count == 0 %>
+      <div class="white-card">
         <p>Sorry, no chat history yet.</p>
+        </div>
       <% else %>
         <% @chatroom_ids.each do |chatroom_id| %>
           <% chatroom = Chatroom.find(chatroom_id) %>
 
           <% if chatroom.participants[1].user_id == current_user.id %>
-              <%= image_tag(User.find(chatroom.participants[0].user_id).avatar_thumbnail, :class => "avatar") %>
-              <li><%= link_to chatroom.name, chatroom_path(chatroom) %></li>
+            <div class="white-card">
+              <div class="d-flex justify-content-between align-items-center">
+                  <%= image_tag(User.find(chatroom.participants[0].user_id).avatar_thumbnail, :class => "avatar-large") %>
+                  <div class="description">
+                    <li><%= link_to chatroom.name.capitalize, chatroom_path(chatroom) %></li>
+                    <li><%= chatroom.messages.last.content.truncate_words(4) %></li>
+                  </div>
+              </div>
+            </div>
           <% else %>
-              <%= image_tag(User.find(chatroom.participants[1].user_id).avatar_thumbnail, :class => "avatar") %>
-              <li><%= link_to chatroom.name, chatroom_path(chatroom) %></li>
+            <div class="white-card">
+              <div class="d-flex justify-content-between align-items-center">
+                  <%= image_tag(User.find(chatroom.participants[1].user_id).avatar_thumbnail, :class => "avatar-large") %>
+                    <div class="description">
+                     <li><%= link_to chatroom.name.capitalize, chatroom_path(chatroom) %></li>
+                      <li><%= chatroom.messages.last.content.truncate_words(4) %></li>
+                    </div>
+              </div>
+            </div>
           <% end %>
 
         <% end %>
       <% end %>
     </ul>
-  </div>
-
 </div>
