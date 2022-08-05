@@ -13,7 +13,7 @@
       <li><i>"<%= booking.message %>"</i></li>
       <li>Status: <%= booking.status %></li>
     </ul>
-    <div class="review-btn">
+    <div class="review-btn center m-3">
       <%= link_to "Accept", accept_booking_path(booking), class: "btn btn-primary", method: "patch" %>
       <%= link_to "Decline", decline_booking_path(booking), class: "btn btn-primary", method: "patch" %>
       <%= link_to "Request Review", request_review_booking_path(booking), class: "btn btn-primary", method: "patch" %>
