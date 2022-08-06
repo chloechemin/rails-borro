@@ -3,6 +3,7 @@
 
 require 'faker'
 
+
 User.create(email: "chichi@gmail.com", password: "123456", username: "ChiChi", first_name: "ChiChi", last_name: "L", phone_number: "0431 000 000", address: "79 Bridge Road, Richmond Victoria 3121, Australia")
 User.create(email: "marco@gmail.com", password: "123456", username: "Marco", first_name: "Marco", last_name: "Borro", phone_number: "0431 000 004", address: "12 River St, Richmond VIC 3121")
 User.create(email: "fran@gmail.com", password: "123456", username: "Fran", first_name:"Fran", last_name: "M", phone_number: "0431 000 002", address: "649 Bridge Rd, Richmond VIC 3121")
