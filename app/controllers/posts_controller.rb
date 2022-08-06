@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-      redirect_to post_confirmation_path
+      redirect_to post_confirmation_path(@post)
     else
       render :new
     end
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to pages_home_path
   end
 
   private

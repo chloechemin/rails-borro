@@ -5,7 +5,7 @@
 </div>
 <div class="result-container borro">
 <%= link_to "", 'javascript:history.back()', class:"fas fa-angle-left back-btn"%>
-  <h3><strong><%= pluralize(@posts.count, "result") %> </strong>near you</h3>
+  <h6><strong><%= pluralize(@posts.count, "result") %> </strong>near you</h6>
       <% @posts.each do |post| %>
     <div class="card-product">
 

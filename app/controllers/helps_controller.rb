@@ -10,7 +10,7 @@ class HelpsController < ApplicationController
     @help.help_request = @help_request
     @help.user = current_user
     if @help.save
-      @chatroom = Chatroom.new({ name: "#{@help.user.username}" })
+      @chatroom = Chatroom.new({ name: "#{@help.user.username.capitalize}" })
       @chatroom.save
       @message = Message.new({ content: @help.message })
       @message.chatroom = @chatroom

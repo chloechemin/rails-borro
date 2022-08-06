@@ -4,11 +4,11 @@
   <div class="character-container">
     <%= image_tag("characters/postnew.png", height: 232, width: 326) %>
   </div>
-  <h3><strong>They can borrow:</strong></h3>
+  <h3><strong>You want to offer:</strong></h3>
 
     <%= simple_form_for(@post) do |f| %>
     <div class="toggle-card ">
-      <%= f.input :category, as: :radio_buttons, collection: [['YOUR THINGS', 'product'], [' YOUR TIME ', 'service']], input_html: { class: 'lender-toggle'  }, wrapper: :vertical_collection_inline, legend_tag: false, :checked => ["product", true] %>
+      <%= f.input :category, as: :radio_buttons, collection: [['SOMETHING', 'product'], [' SOME TIME ', 'service']], input_html: { class: 'lender-toggle'  }, wrapper: :vertical_collection_inline, legend_tag: false, :checked => ["product", true] %>
     </div>
     <div class="white-card">
       <%= f.input :title, label: "What do you lend?", placeholder: "Name it"%>

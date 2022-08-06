@@ -23,6 +23,11 @@
   p {
     margin-bottom: 2px;
   }
+
+  ul {
+    list-style-type: none;
+    padding: 0px;
+  }
 }
 
 .category-white-card{
@@ -41,6 +46,11 @@
 
   h5 {
     color: $white;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0px;
   }
 }
 
@@ -79,4 +89,10 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.km {
+  position: absolute;
+  left: 60px;
+  color: $yellow;
 }

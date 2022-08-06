@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.status = "Not confirmed"
     if @booking.save
-      @chatroom = Chatroom.new({ name: "#{@post.title} - #{@post.user.username}" })
+      @chatroom = Chatroom.new({ name: "#{@post.user.username.capitalize} - #{@post.title.capitalize}" })
       @chatroom.save
       @message = Message.new({ content: @booking.message })
       @message.chatroom = @chatroom
@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
       @participant_post_user = Participant.new({ chatroom_id: @chatroom.id, user_id: @post.user.id })
       @participant_post_user.save
       redirect_to post_booking_path(@post, @booking)
-      PostNotification.with(booking: @booking, message: "#{current_user.username} has made a booking on your post").deliver(@post.user)
+      PostNotification.with(booking: @booking, message: "#{current_user.username.capitalize} has made a booking on your post").deliver(@post.user)
     else
       render :new
     end
@@ -69,10 +69,17 @@ class BookingsController < ApplicationController
     BookingNotification.with(post: @post, message: "#{current_user.username} has rejected your booking!").deliver(@booking.user)
   end
 
+  def request_review
+    @booking = Booking.find(params[:id])
+    @post = @booking.post
+    redirect_to post_bookings_path(@booking.post)
+    ReviewNotification.with(post: @post, booking: @booking, message: "#{current_user.username.capitalize} has requested for you to leave a review!").deliver(@booking.user)
+  end
+
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to posts_path
+    redirect_to my_bookings_path
   end
 
   private
